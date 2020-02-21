@@ -23,3 +23,5 @@
     </form>
   </div>  
   </div>
+
+  <script src="<?=DIR_JS.'./formulario-login.js'?>"></script>
