@@ -1,0 +1,124 @@
+// /* Arquivo SCSS Principal */  
+// https://colorlib.com/etc/lf/Login_v1/index.html
+// // Base 
+@import "./extra/variaveis.scss";  
+// // Componentes 
+@import "./extra/suporte.scss";
+
+
+.fundo-login {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-image: $gradient-principal;
+  opacity: 0.8;
+}
+
+.wrapp-form {
+  border-radius: $border-radius;
+  width: 820px;
+  padding: 60px;
+  background-color: #fff;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-content: stretch;
+  align-items: center;
+  box-shadow: $box-shadow-principal;
+  
+  #form-login {
+    width: 400px;
+    height: 100%;
+    padding: 10px;
+    
+    legend{
+      font-weight: $font-weight;
+      margin-bottom: 20px; 
+      text-transform: uppercase;
+    }
+    .wrapp-input {
+      width: 100%;
+      margin: 10px 0;
+      position: relative;
+    }
+  }
+  .wrapp-icon {
+    width: 100%;
+
+    .wrapp-image{
+      width: 250px;
+      height: 250px;
+      border-radius: 50%;
+      background-color: #f3f3f3;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 8px 8px 15px rgba(0, 0, 0,0.1);
+    }
+  }
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+
+  legend{
+    font-size: $font-titulo;
+    text-align: center;
+  }
+  label, input {
+    font-size: $font-input;
+    width: 100%;
+  }
+  input{
+    display: block;
+    height: 50px;
+    border: none;
+    border-radius: $border-radius-25;
+    padding: 0 30px 0 68px;
+    color: $font-color-cinza;
+    background-color: #eeeeee;
+  }
+  .btn {
+    align-self: flex-end;
+    margin-top: 40px;
+  }
+}
+
+.icons {
+  font-size: 18px;
+  height: 100%;
+
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  
+  display: flex;
+  align-items: center;
+  padding-left: 35px;
+
+  i{
+    color: $color-principal-azul-escuro;
+    pointer-events: none;
+  }
+}
+
+.btn-login {
+  @include btn($font-size-btn, 100%, 50px);
+  border-radius: $border-radius-25;
+  background-color:$color-principal-azul-escuro;
+  color: $font-color-white;
+}
+
+footer {
+  font-size: $font-footer;
+  color: $font-color-white;
+  text-align: center;
+  width: 100%;
+  position: fixed;
+  bottom: 30px;
+  left: 0;
+}

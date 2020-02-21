@@ -1,0 +1,108 @@
+html {
+  font: normal normal 20px/2.5 "Ubuntu", sans-serif; }
+
+.vertical-center {
+  display: flex;
+  align-items: center;
+  justify-content: center; }
+
+.btn {
+  display: block;
+  border: none;
+  cursor: pointer; }
+
+.fundo-login {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-image: linear-gradient(-135deg, #0046b6, #00e3ef);
+  opacity: 0.8; }
+
+.wrapp-form {
+  border-radius: 5px;
+  width: 820px;
+  padding: 60px;
+  background-color: #fff;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-content: stretch;
+  align-items: center;
+  box-shadow: 5px 10px 15px rgba(0, 0, 0, 0.2); }
+  .wrapp-form #form-login {
+    width: 400px;
+    height: 100%;
+    padding: 10px; }
+    .wrapp-form #form-login legend {
+      font-weight: bold;
+      margin-bottom: 20px;
+      text-transform: uppercase; }
+    .wrapp-form #form-login .wrapp-input {
+      width: 100%;
+      margin: 10px 0;
+      position: relative; }
+  .wrapp-form .wrapp-icon {
+    width: 100%; }
+    .wrapp-form .wrapp-icon .wrapp-image {
+      width: 250px;
+      height: 250px;
+      border-radius: 50%;
+      background-color: #f3f3f3;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.1); }
+
+.form {
+  display: flex;
+  flex-direction: column; }
+  .form legend {
+    font-size: 1em;
+    text-align: center; }
+  .form label, .form input {
+    font-size: 0.8em;
+    width: 100%; }
+  .form input {
+    display: block;
+    height: 50px;
+    border: none;
+    border-radius: 25px;
+    padding: 0 30px 0 68px;
+    color: #333;
+    background-color: #eeeeee; }
+  .form .btn {
+    align-self: flex-end;
+    margin-top: 40px; }
+
+.icons {
+  font-size: 18px;
+  height: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  padding-left: 35px; }
+  .icons i {
+    color: #0046b6;
+    pointer-events: none; }
+
+.btn-login {
+  font-size: 0.8em;
+  width: 100%;
+  height: 50px;
+  border-radius: 25px;
+  background-color: #0046b6;
+  color: #fff; }
+
+footer {
+  font-size: 0.7em;
+  color: #fff;
+  text-align: center;
+  width: 100%;
+  position: fixed;
+  bottom: 30px;
+  left: 0; }

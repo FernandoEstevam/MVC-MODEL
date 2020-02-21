@@ -1,0 +1,61 @@
+version: "3.0"
+services:
+  ## MYSQL
+  db:
+    build:
+      context: ./mysql
+      dockerfile: Dockerfile
+    container_name: container-mysql
+    command: --default-authentication-plugin=mysql_native_password
+    volumes:
+      - ./mysql/data:/var/lib/mysql
+    restart: always
+    ports:
+      - "3306:3306"
+    expose:
+      - "3306"
+    environment: 
+      MYSQL_ROOT_PASSWORD: Jesus2512
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: poupemais2020
+      MYSQL_DATA_BASE: db_poupemais
+    networks: 
+      - web-network
+  
+  ## PHP - WEB
+  web:
+    build:
+      context: ./php
+      dockerfile: Dockerfile
+    container_name: container-web
+    volumes:
+      - ./html:/var/www/html
+    restart: always
+    ports: 
+      - "80:80"
+    depends_on: 
+      - db
+    hostname: poupemais.com
+    networks: 
+      - web-network
+
+  ## PHPMyAdmin
+  phpmyadmin:
+    build:
+      context: ./php/phpmyadmin
+      dockerfile: Dockerfile
+    container_name: container-phpmyadmin
+    restart: always
+    ports: 
+      - "8080:80"
+    environment: 
+      PMA_HOST: db
+    depends_on: 
+      - db
+    networks: 
+      - web-network
+
+## Rede
+networks:
+  web-network:
+    driver: bridge

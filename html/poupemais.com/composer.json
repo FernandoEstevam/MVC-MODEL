@@ -1,0 +1,25 @@
+{
+  "name": "projeto/poupemais",
+  "description": "Criação do site poupemais com o sistema de investimento!",
+  "authors": [
+    {
+      "name": "Fernando Estevam",
+      "email": "fernandoestevam23@outlook.com"
+    }
+  ],
+  "require": {
+      "php": ">=7.1",
+      "bjeavons/zxcvbn-php":"^1.0",
+      "phpmailer/phpmailer": "~6.1",
+      "dompdf/dompdf": "^0.8.4"
+  },
+
+  "autoload": {
+    "psr-4": {
+      "Poupemais\\App\\":"./App/",
+      "Poupemais\\Src\\":"./Src/",
+      "Poupemais\\Src\\Core\\":"./Src/Core/",
+      "Poupemais\\Src\\Lib\\":"./Src/Lib/"
+    }
+  }
+}

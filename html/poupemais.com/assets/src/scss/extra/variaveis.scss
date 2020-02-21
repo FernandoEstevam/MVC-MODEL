@@ -1,0 +1,40 @@
+// @import url('https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap');
+
+// HTML
+$fundo-geral: #fff;
+
+// Tipografia  
+$font-style: normal; 
+$font-variant: normal; 
+$font-weight: bold; 
+$font-color: #222; 
+$font-size: 20px; 
+$line-height: 2.5; 
+$font-family: 'Ubuntu',sans-serif;
+
+// Font size
+$font-footer: 14px / #{$font-size}em; 
+$font-size-btn: 16px / #{$font-size}em;
+
+// font color
+$font-color-white: #fff;
+$font-color-cinza: #333;
+
+// Formulario
+$font-titulo: 1em;
+$font-input: 0.8em;
+$font-btn: 0.8em;
+
+// Border
+$border-radius: 5px;
+$border-radius-25: 25px;
+
+// colors
+$color-principal-azul-claro: #00e3ef;
+$color-principal-azul-escuro: #0046b6;
+
+// Background gradient
+$gradient-principal: linear-gradient(-135deg, $color-principal-azul-escuro,$color-principal-azul-claro);
+
+// shadow
+$box-shadow-principal: 5px 10px 15px rgba(0,0,0,0.2);

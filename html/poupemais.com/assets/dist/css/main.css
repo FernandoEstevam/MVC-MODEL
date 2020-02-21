@@ -1,0 +1,18 @@
+html {
+  font: normal normal 20px/2.5 "Ubuntu", sans-serif; }
+
+.vertical-center {
+  display: flex;
+  align-items: center;
+  justify-content: center; }
+
+.btn {
+  display: block;
+  border: none;
+  cursor: pointer; }
+
+html {
+  background: #fff;
+  font-family: "Ubuntu", sans-serif;
+  font-size: 20px;
+  line-height: 2.5; }

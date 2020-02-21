@@ -1,0 +1,12 @@
+// /* Arquivo SCSS Principal */  
+// // Base 
+@import "./extra/variaveis.scss";  
+// // Componentes 
+@import "./extra/suporte.scss";
+
+html {
+  background: $fundo-geral;
+  font-family: $font-family;
+  font-size: $font-size;
+  line-height: $line-height; 
+}
