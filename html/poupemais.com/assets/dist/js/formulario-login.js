@@ -1,7 +1,6 @@
 'use strict';
 
 const frmLogin = document.querySelector('#form-login');
-let resposta = document.querySelector(".response");
 
 const form = {
   login: document.querySelector('#login'),
@@ -9,31 +8,24 @@ const form = {
 }
 
 function sendlogin(e){
-
   e.preventDefault();
 
   const url = frmLogin.action;
   const dados = `login=${form.login.value}&password=${form.passwd.value}`;
   const xhr = new XMLHttpRequest();
-  
-  // xhr.onprogress = update_progress;
-  xhr.addEventListener('loadend', transfer_complete, false);
-  // xhr.addEventListener('error', transfer_falied, false);
-  // xhr.addEventListener('abort', transfer_canceled, false);
   xhr.open('POST', url, true);
   xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+  xhr.onload = handler;
+  xhr.response
   xhr.send(dados);
 }
 
-function transfer_complete() {
-  
-  if(this.status == 200 && this.readyState == 4 ){
-    let responseJson = JSON.parse(this.responseText);
-    console.log(responseJson);
-    if(responseJson.status === 'erro') {
-      resposta.textContent = responseJson.dados;
+function handler() {
+  this.onreadystatechange = function() {
+    if(this.status == 200 && this.readState == 4) {
+      let responseJson = JSON.parse(this.responseText);
+      console.log(reponseJson);
     }
-    resposta.textContent = responseJson.dados;
   }
 }
 
