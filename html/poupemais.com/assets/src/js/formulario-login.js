@@ -8,7 +8,8 @@ const form = {
   passwd: document.querySelector('#password'),
 }
 
-function sendlogin(e){	
+
+function sendlogin(e){
   e.preventDefault();
 
   const url = frmLogin.action;
