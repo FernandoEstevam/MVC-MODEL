@@ -69,11 +69,14 @@
     font-size: $font-titulo;
     text-align: center;
   }
-  label, input {
+  label, input, select {
     font-size: $font-input;
     width: 100%;
   }
-  input{
+  label, select {
+    color: #9c9c9c !important;
+  }
+  input, select{
     display: block;
     height: 50px;
     border: none;
@@ -121,4 +124,166 @@ footer {
   position: fixed;
   bottom: 30px;
   left: 0;
+}
+
+// Formulario cadastro
+.container {
+  max-width: 1200px;
+  height: 100%;
+  width: 100%;
+  margin: 0 auto;
+}
+#form-cadastro {
+  width: 920px;
+  margin: 0 auto;
+  
+  h1 {
+    font-size: $font-titulo;
+    text-align: center;
+    margin: 40px 0;
+  }
+
+  input, select {
+    border-radius: 10px !important;
+    padding: 0px 20px !important;
+  }
+  fieldset {
+    border: 1px solid #eeeeee;
+    padding: 10px 20px 40px 20px;
+    margin-bottom: 40px;
+
+    legend {
+      font-size: $font-input;
+      padding: 0 15px;
+      margin: 0 30px;
+      text-align: left;
+    }
+  }
+  .group-input {
+    width: 100%;  
+    display: grid;
+    gap: 20px;
+  }
+  .dados-pessoais {
+    grid-template-areas:
+    'nome nome nome nome cpf cpf' 
+    'rg rg nascimento nascimento estado-civil estado-civil';
+
+    .nome{
+      grid-area: nome;
+      width: 100%;
+    }
+    .cpf {
+      grid-area: cpf;
+    }
+    .rg {
+      grid-area: rg;
+    }
+    .nascimento {
+      grid-area: nascimento;
+    }
+    .estado-civil {
+      grid-area: estado-civil;
+    }
+  }
+
+  .endereco {
+    grid-template-areas: 
+      'cep rua rua rua rua rua rua'
+      'numero complemento complemento cidade cidade cidade uf'
+    ;
+    .cep {
+      grid-area: cep;
+    }
+    .rua {
+      grid-area: rua;
+    }
+    .numero {
+      grid-area: numero;
+    }
+    .complemento {
+      grid-area: complemento;
+    }
+    .cidade {
+      grid-area: cidade;
+    }
+    .uf {
+      grid-area: uf;
+    }
+  }
+
+  .investimento {
+    grid-template-areas: 
+      'plano plano valor valor valor'
+      'vencimento vencimento aporte aporte aporte'
+    ;
+    align-items: center;
+    .plano {
+      grid-area: plano;
+    }
+    .valor {
+      grid-area: valor;
+    }
+    .vencimento {
+      grid-area: vencimento;
+    }
+    .aporte {
+      grid-area: aporte;
+    }
+
+    [for="aporte"] {
+      display: block;
+      width: 220px;
+      text-align: center;
+  }
+    .group-aporte {
+      width: 100%;
+      display: flex;
+    }
+    .group-aporte-input {
+      width: 20%;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      
+      label {
+        width: 50px;
+        margin-left: 10px;
+      }  
+      input[type='radio'] {
+        width: 20px;
+        height: 20px;
+      }
+    }  
+  }
+  .termos {
+    width: 25%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 40px;
+
+    label {
+      width: 100%;
+    }
+    input[type="checkbox"] {
+      width: 15px;
+      height: 15px;
+      margin-right: 10px;
+    }
+    a {
+      font-size: 14px;
+      text-decoration: none;
+    }
+  }
+  .btn-cadastro {
+    font-size: $font-btn;
+    width: 50%;
+    height: 40px;
+    margin: 0 auto 60px auto;
+    border-radius: $border-radius;
+    background-color: $color-principal-azul-escuro;
+    color: $font-color-white;
+  }
 }
