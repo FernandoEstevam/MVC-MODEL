@@ -62,10 +62,12 @@ html {
   .form legend {
     font-size: 1em;
     text-align: center; }
-  .form label, .form input {
+  .form label, .form input, .form select {
     font-size: 0.8em;
     width: 100%; }
-  .form input {
+  .form label, .form select {
+    color: #9c9c9c !important; }
+  .form input, .form select {
     display: block;
     height: 50px;
     border: none;
@@ -106,3 +108,113 @@ footer {
   position: fixed;
   bottom: 30px;
   left: 0; }
+
+.container {
+  max-width: 1200px;
+  height: 100%;
+  width: 100%;
+  margin: 0 auto; }
+
+#form-cadastro {
+  width: 920px;
+  margin: 0 auto; }
+  #form-cadastro h1 {
+    font-size: 1em;
+    text-align: center;
+    margin: 40px 0; }
+  #form-cadastro input, #form-cadastro select {
+    border-radius: 10px !important;
+    padding: 0px 20px !important; }
+  #form-cadastro fieldset {
+    border: 1px solid #eeeeee;
+    padding: 10px 20px 40px 20px;
+    margin-bottom: 40px; }
+    #form-cadastro fieldset legend {
+      font-size: 0.8em;
+      padding: 0 15px;
+      margin: 0 30px;
+      text-align: left; }
+  #form-cadastro .group-input {
+    width: 100%;
+    display: grid;
+    gap: 20px; }
+  #form-cadastro .dados-pessoais {
+    grid-template-areas: 'nome nome nome nome cpf cpf'  'rg rg nascimento nascimento estado-civil estado-civil'; }
+    #form-cadastro .dados-pessoais .nome {
+      grid-area: nome;
+      width: 100%; }
+    #form-cadastro .dados-pessoais .cpf {
+      grid-area: cpf; }
+    #form-cadastro .dados-pessoais .rg {
+      grid-area: rg; }
+    #form-cadastro .dados-pessoais .nascimento {
+      grid-area: nascimento; }
+    #form-cadastro .dados-pessoais .estado-civil {
+      grid-area: estado-civil; }
+  #form-cadastro .endereco {
+    grid-template-areas: 'cep rua rua rua rua rua rua' 'numero complemento complemento cidade cidade cidade uf'; }
+    #form-cadastro .endereco .cep {
+      grid-area: cep; }
+    #form-cadastro .endereco .rua {
+      grid-area: rua; }
+    #form-cadastro .endereco .numero {
+      grid-area: numero; }
+    #form-cadastro .endereco .complemento {
+      grid-area: complemento; }
+    #form-cadastro .endereco .cidade {
+      grid-area: cidade; }
+    #form-cadastro .endereco .uf {
+      grid-area: uf; }
+  #form-cadastro .investimento {
+    grid-template-areas: 'plano plano valor valor valor' 'vencimento vencimento aporte aporte aporte';
+    align-items: center; }
+    #form-cadastro .investimento .plano {
+      grid-area: plano; }
+    #form-cadastro .investimento .valor {
+      grid-area: valor; }
+    #form-cadastro .investimento .vencimento {
+      grid-area: vencimento; }
+    #form-cadastro .investimento .aporte {
+      grid-area: aporte; }
+    #form-cadastro .investimento [for="aporte"] {
+      display: block;
+      width: 220px;
+      text-align: center; }
+    #form-cadastro .investimento .group-aporte {
+      width: 100%;
+      display: flex; }
+    #form-cadastro .investimento .group-aporte-input {
+      width: 20%;
+      display: flex;
+      flex-direction: row;
+      align-items: center; }
+      #form-cadastro .investimento .group-aporte-input label {
+        width: 50px;
+        margin-left: 10px; }
+      #form-cadastro .investimento .group-aporte-input input[type='radio'] {
+        width: 20px;
+        height: 20px; }
+  #form-cadastro .termos {
+    width: 25%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 40px; }
+    #form-cadastro .termos label {
+      width: 100%; }
+    #form-cadastro .termos input[type="checkbox"] {
+      width: 15px;
+      height: 15px;
+      margin-right: 10px; }
+    #form-cadastro .termos a {
+      font-size: 14px;
+      text-decoration: none; }
+  #form-cadastro .btn-cadastro {
+    font-size: 0.8em;
+    width: 50%;
+    height: 40px;
+    margin: 0 auto 60px auto;
+    border-radius: 5px;
+    background-color: #0046b6;
+    color: #fff; }
