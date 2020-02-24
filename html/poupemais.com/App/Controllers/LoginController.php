@@ -18,7 +18,7 @@ class LoginController extends Controller
   {
     try {
       $this->session = new Session();
-      $this->view->render('header_login','/login/index',['nome' => 'Fernando Estevam'], '');
+      $this->view->render('header_login','/login/index',['nome' => 'Fernando Estevam'], 'footer_login');
     } catch (Exception $e) {
       echo $e->getMessage();
     }

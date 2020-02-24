@@ -10,3 +10,8 @@ html {
   font-size: $font-size;
   line-height: $line-height; 
 }
+
+html, body {
+  width: 100%;
+  height: 100%;
+}
