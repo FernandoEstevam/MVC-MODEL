@@ -100,19 +100,20 @@ html {
   background-color: #0046b6;
   color: #fff; }
 
-footer {
+#footer-login, footer {
   font-size: 0.7em;
-  color: #fff;
+  color: #333;
   text-align: center;
-  width: 100%;
+  width: 100%; }
+
+#footer-login {
+  color: #fff;
   position: fixed;
   bottom: 30px;
   left: 0; }
 
 .container {
   max-width: 1200px;
-  height: 100%;
-  width: 100%;
   margin: 0 auto; }
 
 #form-cadastro {

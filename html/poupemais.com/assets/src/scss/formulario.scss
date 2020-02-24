@@ -116,11 +116,14 @@
   color: $font-color-white;
 }
 
-footer {
+#footer-login, footer {
   font-size: $font-footer;
-  color: $font-color-white;
+  color: $font-color-cinza;
   text-align: center;
   width: 100%;
+}
+#footer-login {
+  color: $font-color-white;
   position: fixed;
   bottom: 30px;
   left: 0;
@@ -129,8 +132,6 @@ footer {
 // Formulario cadastro
 .container {
   max-width: 1200px;
-  height: 100%;
-  width: 100%;
   margin: 0 auto;
 }
 #form-cadastro {
