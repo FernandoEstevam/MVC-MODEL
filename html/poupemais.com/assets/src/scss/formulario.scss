@@ -191,7 +191,8 @@
   .endereco {
     grid-template-areas: 
       'cep rua rua rua rua rua rua'
-      'numero complemento complemento cidade cidade cidade uf'
+      'numero numero complemento complemento bairro bairro bairro'
+      'cidade cidade cidade cidade cidade cidade uf'
     ;
     .cep {
       grid-area: cep;
@@ -204,6 +205,9 @@
     }
     .complemento {
       grid-area: complemento;
+    }
+    .bairro {
+      grid-area: bairro;
     }
     .cidade {
       grid-area: cidade;
