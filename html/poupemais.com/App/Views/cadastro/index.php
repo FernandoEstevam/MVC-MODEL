@@ -35,8 +35,8 @@
             <option value="" selected disabled hidden>Estado Civil</option>
             <option value="casado">Casado</option>
             <option value="solteiro">Solteiro</option>
-            <option value="viuvo">Viúvo</option>
             <option value="divorciado">Divorciado</option>
+            <option value="viuvo">Viúvo</option>
           </select>
         </div>
       </div>
@@ -48,7 +48,7 @@
       <div class="group-input endereco">
         <div class="wrapp-input cep">
           <label for="cep">CEP</label>
-          <input type="text" name="cep" maxlength="9" minlength="9" id="cep" required placeholder="xxxxx-xxx"/>
+          <input type="text" name="cep" maxlength="9" minlength="8" id="cep" required placeholder="xxxxx-xxx"/>
         </div>
         <div class="wrapp-input rua">
           <label for="logradouro">Rua</label>
@@ -108,9 +108,9 @@
           <label for="plano">Planos</label>
           <select name="plano" id="plano" required>
             <option value="" selected disabled hidden>Planos</option>
-            <option value="1">6 Meses</option>
-            <option value="2">9 Meses</option>
-            <option value="3">12 Meses</option>
+            <option value="6">6 Meses</option>
+            <option value="9">9 Meses</option>
+            <option value="12">12 Meses</option>
           </select>
         </div>
         <div class="wrapp-input valor">
