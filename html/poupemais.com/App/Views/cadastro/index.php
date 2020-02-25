@@ -13,6 +13,10 @@
           <label for="nome">Nome</label>
           <input type="text" name="nome" id="nome" placeholder="digite seu nome" required/>
         </div>
+        <div class="wrapp-input nascimento">
+          <label for="nascimento">Dta. Nascimento</label>
+          <input type="date" name="nascimento" id="nascimento" required min="1920-01-01" max="2002-01-01"/>
+        </div>
         <div class="wrapp-input cpf">
           <label for="cpf">CPF</label>
           <input type="text" name="cpf" id="cpf" placeholder="xxx.xxx.xxx-xx" required />
@@ -21,9 +25,9 @@
           <label for="rg">RG</label>
           <input type="text" name="rg" id="rg" placeholder="xx.xxx.xxx-x" required/>
         </div>
-        <div class="wrapp-input nascimento">
-          <label for="nascimento">Dta. Nascimento</label>
-          <input type="date" name="nascimento" id="nascimento" required min="1920-01-01" max="2002-01-01"/>
+        <div class="wrapp-input telefone">
+          <label for="telefone">Telefone</label>
+          <input type="text" name="telefone" id="telefone" required placeholder="(xx) xxxx-xxx"/>
         </div>
         <div class="wrapp-input estado-civil">
           <label for="estado-civil">Estado Civil</label>
@@ -82,6 +86,10 @@
           <input type="email" name="email" id="email" placeholder="email@email.com" required/>
         </div>
         <div class="wrapp-input">
+          <label for="conf-email">Confirmação Email</label>
+          <input type="email" name="conf-email" id="conf-email" placeholder="email@email.com" required/>
+        </div>
+        <div class="wrapp-input">
           <label for="password">Senha</label>
           <input type="password" name="password" id="password" placeholder="digite sua senha" required/>
         </div>
@@ -98,7 +106,7 @@
       <div class="group-input investimento">
         <div class="wrapp-input plano">
           <label for="plano">Planos</label>
-          <select name="planos" id="plano" required>
+          <select name="plano" id="plano" required>
             <option value="" selected disabled hidden>Planos</option>
             <option value="1">6 Meses</option>
             <option value="2">9 Meses</option>
