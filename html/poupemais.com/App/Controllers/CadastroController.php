@@ -12,4 +12,9 @@ class CadastroController extends Controller
   {
     $this->view->render('','cadastro/index',[],'');
   }
+
+  public function validateCadastro()
+  {
+    var_dump($_POST);
+  }
 }

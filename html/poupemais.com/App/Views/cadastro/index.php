@@ -3,7 +3,7 @@
 ?>
 <div class="container">
   <!-- Inicio formulario cadastro -->
-  <form action="#" method="post" id="form-cadastro" class="form">
+  <form action="./cadastro/validateCadastro" method="post" id="form-cadastro" class="form">
     <h1>Cadastro Cliente</h1>
     <!-- Inicio fieldset Dados Pessoais -->
     <fieldset>
@@ -44,19 +44,23 @@
       <div class="group-input endereco">
         <div class="wrapp-input cep">
           <label for="cep">CEP</label>
-          <input type="text" name="cep" id="cep" required placeholder="xxxxx-xxx"/>
+          <input type="text" name="cep" maxlength="9" minlength="9" id="cep" required placeholder="xxxxx-xxx"/>
         </div>
         <div class="wrapp-input rua">
-          <label for="rua">Rua</label>
-          <input type="text" name="rua" id="rua" readonly required placeholder="Rua"/>
+          <label for="logradouro">Rua</label>
+          <input type="text" name="logradouro" id="logradouro" readonly required placeholder="Lougradouro"/>
         </div>
         <div class="wrapp-input numero">
           <label for="numero">N.º</label>
-          <input type="text" name="numero" id="numero" readonly required placeholder="numero"/>
+          <input type="text" name="numero" id="numero" required placeholder="numero"/>
         </div>
         <div class="wrapp-input complemento">
           <label for="complemento">Compl.</label>
           <input type="text" name="complemento" id="complemento" placeholder="Compl."/>
+        </div>
+        <div class="wrapp-input bairro">
+          <label for="bairro">bairro</label>
+          <input type="text" name="bairro" id="bairro" readonly required placeholder="bairro"/>
         </div>
         <div class="wrapp-input cidade">
           <label for="cidade">Cidade</label>
@@ -132,6 +136,9 @@
         </div>
       </div>
     </fieldset>
+    <div class="wrapp-input response">
+      <span id="response"></span>
+    </div>
     <!-- Fim fieldset Investimento -->
     <!-- Inicio fieldset Aceite termos -->
     <div class="wrapp-input termos">
@@ -143,3 +150,4 @@
   </form>
   <!-- Fim fieldset formulario cadastro -->
 </div>
+<script src="<?= DIR_JS ?>consulta-cep.js"></script>
