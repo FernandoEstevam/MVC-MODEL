@@ -15,10 +15,10 @@ services:
     expose:
       - "3306"
     environment: 
-      MYSQL_ROOT_PASSWORD: Jesus2512
-      MYSQL_USER: admin
-      MYSQL_PASSWORD: poupemais2020
-      MYSQL_DATA_BASE: db_poupemais
+      MYSQL_ROOT_PASSWORD: "Jesus2512"
+      MYSQL_USER: "admin"
+      MYSQL_PASSWORD: "poupemais2020"
+      MYSQL_DATA_BASE: "db_poupemais"
     networks: 
       - web-network
   

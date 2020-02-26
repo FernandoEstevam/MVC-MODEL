@@ -167,8 +167,9 @@
   }
   .dados-pessoais {
     grid-template-areas:
-    'nome nome nome nome cpf cpf' 
-    'rg rg nascimento nascimento estado-civil estado-civil';
+    'nome nome nome nome nome nome nascimento' 
+    'cpf cpf cpf rg rg rg rg '
+    'telefone telefone telefone telefone estado-civil estado-civil estado-civil';
 
     .nome{
       grid-area: nome;
@@ -182,6 +183,9 @@
     }
     .nascimento {
       grid-area: nascimento;
+    }
+    .telefone {
+      grid-area: telefone;
     }
     .estado-civil {
       grid-area: estado-civil;

@@ -13,6 +13,10 @@
           <label for="nome">Nome</label>
           <input type="text" name="nome" id="nome" placeholder="digite seu nome" required/>
         </div>
+        <div class="wrapp-input nascimento">
+          <label for="nascimento">Dta. Nascimento</label>
+          <input type="date" name="nascimento" id="nascimento" required min="1920-01-01" max="2002-01-01"/>
+        </div>
         <div class="wrapp-input cpf">
           <label for="cpf">CPF</label>
           <input type="text" name="cpf" id="cpf" placeholder="xxx.xxx.xxx-xx" required />
@@ -21,9 +25,9 @@
           <label for="rg">RG</label>
           <input type="text" name="rg" id="rg" placeholder="xx.xxx.xxx-x" required/>
         </div>
-        <div class="wrapp-input nascimento">
-          <label for="nascimento">Dta. Nascimento</label>
-          <input type="date" name="nascimento" id="nascimento" required min="1920-01-01" max="2002-01-01"/>
+        <div class="wrapp-input telefone">
+          <label for="telefone">Telefone</label>
+          <input type="text" name="telefone" id="telefone" required placeholder="(xx) xxxx-xxx"/>
         </div>
         <div class="wrapp-input estado-civil">
           <label for="estado-civil">Estado Civil</label>
@@ -31,8 +35,8 @@
             <option value="" selected disabled hidden>Estado Civil</option>
             <option value="casado">Casado</option>
             <option value="solteiro">Solteiro</option>
-            <option value="viuvo">Viúvo</option>
             <option value="divorciado">Divorciado</option>
+            <option value="viuvo">Viúvo</option>
           </select>
         </div>
       </div>
@@ -44,7 +48,7 @@
       <div class="group-input endereco">
         <div class="wrapp-input cep">
           <label for="cep">CEP</label>
-          <input type="text" name="cep" maxlength="9" minlength="9" id="cep" required placeholder="xxxxx-xxx"/>
+          <input type="text" name="cep" maxlength="9" minlength="8" id="cep" required placeholder="xxxxx-xxx"/>
         </div>
         <div class="wrapp-input rua">
           <label for="logradouro">Rua</label>
@@ -82,6 +86,10 @@
           <input type="email" name="email" id="email" placeholder="email@email.com" required/>
         </div>
         <div class="wrapp-input">
+          <label for="conf-email">Confirmação Email</label>
+          <input type="email" name="conf-email" id="conf-email" placeholder="email@email.com" required/>
+        </div>
+        <div class="wrapp-input">
           <label for="password">Senha</label>
           <input type="password" name="password" id="password" placeholder="digite sua senha" required/>
         </div>
@@ -98,11 +106,11 @@
       <div class="group-input investimento">
         <div class="wrapp-input plano">
           <label for="plano">Planos</label>
-          <select name="planos" id="plano" required>
+          <select name="plano" id="plano" required>
             <option value="" selected disabled hidden>Planos</option>
-            <option value="1">6 Meses</option>
-            <option value="2">9 Meses</option>
-            <option value="3">12 Meses</option>
+            <option value="6">6 Meses</option>
+            <option value="9">9 Meses</option>
+            <option value="12">12 Meses</option>
           </select>
         </div>
         <div class="wrapp-input valor">

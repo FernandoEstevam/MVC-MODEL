@@ -140,7 +140,7 @@ html {
     display: grid;
     gap: 20px; }
   #form-cadastro .dados-pessoais {
-    grid-template-areas: 'nome nome nome nome cpf cpf'  'rg rg nascimento nascimento estado-civil estado-civil'; }
+    grid-template-areas: 'nome nome nome nome nome nome nascimento'  'cpf cpf cpf rg rg rg rg ' 'telefone telefone telefone telefone estado-civil estado-civil estado-civil'; }
     #form-cadastro .dados-pessoais .nome {
       grid-area: nome;
       width: 100%; }
@@ -150,10 +150,12 @@ html {
       grid-area: rg; }
     #form-cadastro .dados-pessoais .nascimento {
       grid-area: nascimento; }
+    #form-cadastro .dados-pessoais .telefone {
+      grid-area: telefone; }
     #form-cadastro .dados-pessoais .estado-civil {
       grid-area: estado-civil; }
   #form-cadastro .endereco {
-    grid-template-areas: 'cep rua rua rua rua rua rua' 'numero numero complemento complemento bairro bairro bairro' 'cidade cidade cidade cidade cidade cidade uf'; }
+    grid-template-areas: 'cep rua rua rua rua rua rua' 'numero complemento bairro bairro bairro bairro bairro' 'cidade cidade cidade cidade cidade uf uf'; }
     #form-cadastro .endereco .cep {
       grid-area: cep; }
     #form-cadastro .endereco .rua {

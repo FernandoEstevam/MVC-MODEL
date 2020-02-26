@@ -20,6 +20,22 @@ class ValidaDados extends PasswordHash
     return filter_var($post, FILTER_SANITIZE_SPECIAL_CHARS);
   }
 
+  # Verifica se o POST esta vazio
+  public static function verificaCampos($post) {
+    $i = 0;
+
+    foreach ($post as $key => $value) {
+      if(empty($value)) {
+        if($key !== 'complemento') {
+          $i++;
+        }
+      }
+    }
+    if($i > 0) {
+      Erro::setErro('Preencha todos os campos!');
+    }
+  }
+
   # Valida os email
   protected function validaEmail(string $post): string 
   { 
