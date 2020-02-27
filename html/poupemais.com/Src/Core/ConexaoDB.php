@@ -20,7 +20,6 @@ class ConexaoDB
         DATA_LAYER_CONFIG['passwd'],
         DATA_LAYER_CONFIG['options']
       );
-      // return $this->conn;
     } catch (PDOException $e) {
       echo $e->getMessage();
     }
