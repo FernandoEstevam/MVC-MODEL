@@ -4,6 +4,8 @@
  */
 
 namespace Poupemais\App\Controllers;
+
+use Exception;
 use Poupemais\Src\Core\Controller;
 use Poupemais\Src\Core\ValidaDados;
 use Poupemais\Src\Lib\Cliente;
@@ -11,17 +13,25 @@ use Poupemais\Src\Lib\CPF;
 use Poupemais\Src\Lib\Endereco;
 use Poupemais\Src\Lib\Investimento;
 use Poupemais\Src\Lib\Usuario;
+use Poupemais\Src\Lib\ViewModel;
 
 class CadastroController extends Controller
 {
   private Cliente $cliente;
-
+  private ViewModel $viewDados;
+  
   public function index()
-  {
-    $this->view->render('','cadastro/index',[],'');
+  { 
+    try {
+      $this->viewDados = new ViewModel();
+      $plano = $this->viewDados->selectAllPlano();
+      $this->view->render('','cadastro/index',['planos' => $plano],'');
+    } catch (Exception $e) {
+      echo $e->getMessage();
+    }
   }
 
-  public function validateCadastro()
+  public function validateCadastro():void
   {
     ValidaDados::verificaCampos($_POST);
 
