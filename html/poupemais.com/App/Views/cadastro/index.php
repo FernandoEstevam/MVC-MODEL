@@ -33,9 +33,9 @@
           <label for="estado-civil">Estado Civil</label>
           <select name="estado-civil" id="estado-civil" required>
             <option value="" selected disabled hidden>Estado Civil</option>
-            <option value="casado">Casado</option>
             <option value="solteiro">Solteiro</option>
             <option value="divorciado">Divorciado</option>
+            <option value="casado">Casado</option>
             <option value="viuvo">Viúvo</option>
           </select>
         </div>
@@ -108,9 +108,10 @@
           <label for="plano">Planos</label>
           <select name="plano" id="plano" required>
             <option value="" selected disabled hidden>Planos</option>
-            <option value="6">6 Meses</option>
-            <option value="9">9 Meses</option>
-            <option value="12">12 Meses</option>
+            <?php foreach ($data['planos'] as $plano) :?>
+              <option value="<?=$plano['id']?>"><?=$plano['nome']?></option>
+            <?php endforeach; ?>
+          
           </select>
         </div>
         <div class="wrapp-input valor">
