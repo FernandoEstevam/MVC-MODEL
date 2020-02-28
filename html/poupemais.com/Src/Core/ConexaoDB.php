@@ -8,9 +8,9 @@ use PDOException;
 
 class ConexaoDB
 {
-  private PDO $conn;
+  protected PDO $conn;
 
-  protected function __construct() 
+  public function __construct() 
   {
     # Conexao banco de dados
     try {
