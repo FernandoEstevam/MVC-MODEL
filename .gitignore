@@ -1,0 +1,6 @@
+/.gitignore
+/mysql/data/
+/html/poupemais.com/vendor/
+/html/poupemais.com/config/
+/html/poupemais.com/gulpfile/
+/html/poupemais.com/node_modules/
