@@ -16,14 +16,24 @@ class Crud extends ConexaoDB
   private function prepareExec(string $prep, array $exec): void
   {
     try {
+      $this->conn->beginTransaction();
+      
       $this->crud = $this->conn->prepare($prep);
+  
       try {
         $this->crud->execute($exec);
+        
       } catch (PDOException $e) {
-        Erro::setErro($e->getMessage());
+        exit($e->getMessage());
       }
+
+      $this->conn->commit();
+
     } catch (PDOException $e) {
-      Erro::setErro($e->getMessage());
+      
+      $this->conn->rollBack();
+
+      exit($e->getMessage());
     }
   }
 
