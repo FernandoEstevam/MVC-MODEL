@@ -7,7 +7,7 @@ namespace Poupemais\App\Controllers;
 
 use Exception;
 use Poupemais\App\Models\CadastroDB;
-use Poupemais\Src\Core\{ConexaoDB, Controller, ValidaDados};
+use Poupemais\Src\Core\{ConexaoDB, Controller, Erro, ValidaDados};
 use Poupemais\Src\Lib\{CPF,Endereco, Investimento, Usuario, ViewModel,Cliente};
 
 class CadastroController extends Controller
@@ -23,7 +23,7 @@ class CadastroController extends Controller
       $plano = $this->viewDados->selectAllPlano();
       $this->view->render('','cadastro/index',['planos' => $plano],'');
     } catch (Exception $e) {
-      echo $e->getMessage();
+      exit($e->getMessage());
     }
   }
 
@@ -65,8 +65,9 @@ class CadastroController extends Controller
         )
       );
       $this->cadastrado($this->cliente);
+      Erro::setSuccess("Cadastro efetuado com sucesso");
     } catch (Exception $e) {
-      echo $e->getMessage();
+      exit($e->getMessage());
     }
   }
 
@@ -75,5 +76,8 @@ class CadastroController extends Controller
   {
     $this->cad_db = new CadastroDB();
     $this->cad_db->cadastraUsuario($cliente);
+    $this->cad_db->cadastraCliente($cliente);
+    $this->cad_db->cadastraInvestimento($cliente);
+    $this->cad_db->cadastraVencimentos($cliente);
   }
 }
