@@ -6,7 +6,7 @@
  * utilizacao para arquivos html com ou sem paramentros
  */
 namespace Poupemais\Src\Core;
-use Exception;
+use Poupemais\Src\Core\Erro;
 
 class View
 {
@@ -14,13 +14,7 @@ class View
   public function render(string $header, string $view, array $data=[], string $footer): void
   {
     if(!file_exists(VIEWS . '/' . $view . '.php')){
-      throw new Exception(
-        json_encode(
-          array(
-            "status" => "erro",
-            "dados" => "Arquivo não existe!"
-      )), 1);
-      exit();
+      Erro::setErro("Arquivo não existe!");
     }
     
     self::header($header);
