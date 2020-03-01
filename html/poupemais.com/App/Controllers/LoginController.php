@@ -20,7 +20,7 @@ class LoginController extends Controller
       $this->session = new Session();
       $this->view->render('header_login','/login/index',['nome' => 'Fernando Estevam'], 'footer_login');
     } catch (Exception $e) {
-      echo $e->getMessage();
+      exit($e->getMessage());
     }
   }
 
