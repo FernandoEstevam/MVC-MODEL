@@ -15,12 +15,14 @@ class Usuario extends ValidaDados
 {
   private string $email;
   private string $passwd;
+  private string $data_cadastro;
 
   public function __construct(string $email, string $passwd, string $conf_email=null, string $conf_passwd=null)
 {
     try {
       $this->email = $this->validaEmail($email, $conf_email);
       $this->passwd = $this->validaPassword($passwd, $conf_passwd);
+      $this->data_cadastro = date("Y-m-d H:i:s");
     } catch (Exception $e) {
       exit($e->getMessage());
     }
@@ -81,5 +83,10 @@ class Usuario extends ValidaDados
   public function getPasswd(): string 
   {
     return $this->passwd;
+  }
+  
+  public function getDataCadastro(): string
+  {
+    return $this->data_cadastro;
   }
 }
