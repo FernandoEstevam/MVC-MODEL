@@ -26,7 +26,7 @@ class DashboardController extends Controller
     try {
       $this->view->render('','/dashboard/index',['nome' => $_SESSION['name'],'login' => $_SESSION['email']], '');
     } catch (Exception $e) {
-      echo $e->getMessage();
+      exit($e->getMessage());
     }
   }
 }
