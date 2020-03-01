@@ -70,6 +70,11 @@ class CPF extends ValidaDados
 
   public function getCPF():string
   {
+    return $this->cpf;
+  }
+
+  public function getShowCPF():string
+  {
     return $this->showCPF($this->cpf);
   }
 }
