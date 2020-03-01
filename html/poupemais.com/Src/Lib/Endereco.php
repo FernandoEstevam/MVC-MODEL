@@ -12,7 +12,7 @@ use Exception;
 class Endereco extends ValidaDados
 {
   private string $cep;
-  private string $rua;
+  private string $logradouro;
   private string $numero;
   private string $compl;
   private string $bairro;
@@ -21,7 +21,7 @@ class Endereco extends ValidaDados
 
   public function __construct(
     string $cep, 
-    string $rua, 
+    string $logradouro, 
     string $numero, 
     string $bairro,  
     string $cidade, 
@@ -30,9 +30,9 @@ class Endereco extends ValidaDados
   {
     try {
       $this->cep = $this->quantidadeChars($this->validaInput($cep), 8, "CEP deve ter 8 digítos");
-      $this->rua = ucwords($this->validaInput($rua));
+      $this->logradouro = ucwords($this->validaInput($logradouro));
       $this->numero = $this->validaInput($numero);
-      $this->compl =  $this->verificaComplemento($compl);
+      $this->compl =  $this->verificaComplemento($this->validaInput($compl));
       $this->bairro = ucwords($this->validaInput($bairro));
       $this->cidade = ucwords($this->validaInput($cidade));
       $this->uf = strtoupper($this->validaInput($uf));
@@ -57,9 +57,9 @@ class Endereco extends ValidaDados
     return $this->showCep($this->cep);
   }
  
-  public function getRua(): string
+  public function getlogradouro(): string
   {
-    return $this->rua;
+    return $this->logradouro;
   }  
   
   public function getNumero(): string 
