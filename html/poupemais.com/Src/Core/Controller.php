@@ -9,7 +9,6 @@
 namespace Poupemais\Src\Core;
 
 use Poupemais\Src\Core\View;
-use Exception;
 
 class Controller extends View
 {  
