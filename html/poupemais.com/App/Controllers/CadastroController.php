@@ -6,20 +6,16 @@
 namespace Poupemais\App\Controllers;
 
 use Exception;
-use Poupemais\Src\Core\Controller;
-use Poupemais\Src\Core\ValidaDados;
-use Poupemais\Src\Lib\Cliente;
-use Poupemais\Src\Lib\CPF;
-use Poupemais\Src\Lib\Endereco;
-use Poupemais\Src\Lib\Investimento;
-use Poupemais\Src\Lib\Usuario;
-use Poupemais\Src\Lib\ViewModel;
+use Poupemais\App\Models\CadastroDB;
+use Poupemais\Src\Core\{ConexaoDB, Controller, ValidaDados};
+use Poupemais\Src\Lib\{CPF,Endereco, Investimento, Usuario, ViewModel,Cliente};
 
 class CadastroController extends Controller
 {
   private Cliente $cliente;
   private ViewModel $viewDados;
-  
+  private CadastroDB $cad_db;
+
   public function index()
   { 
     try {
@@ -33,41 +29,51 @@ class CadastroController extends Controller
 
   public function validateCadastro():void
   {
-    ValidaDados::verificaCampos($_POST);
+    try {
+      
+      ValidaDados::verificaCampos($_POST);
 
-    $this->cliente = new Cliente(
-      new Usuario(
-       $_POST['email'],
-       $_POST['password'],
-       $_POST['conf-email'],
-       $_POST['conf-password'] 
-      ),
-      new Endereco(
-        $_POST['cep'],
-        $_POST['logradouro'],
-        $_POST['numero'],
-        $_POST['bairro'],
-        $_POST['cidade'],
-        $_POST['uf'],
-        $_POST['complemento']
-      ),
-      new CPF(
-        $_POST['cpf']
-      ),
-      $_POST['nome'],
-      $_POST['rg'],
-      $_POST['nascimento'],
-      $_POST['estado-civil'],
-      $_POST['telefone'],
-      new Investimento(
-        $_POST['plano'],
-        $_POST['valor'],
-        $_POST['aporte'],
-        $_POST['vencimento'],
-      )
-    );
+      $this->cliente = new Cliente(
+        new Usuario(
+         $_POST['email'],
+         $_POST['password'],
+         $_POST['conf-email'],
+         $_POST['conf-password'] 
+        ),
+        new Endereco(
+          $_POST['cep'],
+          $_POST['logradouro'],
+          $_POST['numero'],
+          $_POST['bairro'],
+          $_POST['cidade'],
+          $_POST['uf'],
+          $_POST['complemento']
+        ),
+        new CPF(
+          $_POST['cpf']
+        ),
+        $_POST['nome'],
+        $_POST['rg'],
+        $_POST['nascimento'],
+        $_POST['estado-civil'],
+        $_POST['telefone'],
+        new Investimento(
+          $_POST['plano'],
+          $_POST['valor'],
+          $_POST['aporte'],
+          $_POST['vencimento'],
+        )
+      );
+      $this->cadastrado($this->cliente);
+    } catch (Exception $e) {
+      echo $e->getMessage();
+    }
+  }
 
-    echo "<pre>";
-    print_r($this->cliente->getInvestimento());
+  # Cadastro no banco de dados 
+  private function cadastrado (Cliente $cliente): void
+  {
+    $this->cad_db = new CadastroDB();
+    $this->cad_db->cadastraUsuario($cliente);
   }
 }
