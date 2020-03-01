@@ -3,6 +3,8 @@
  * class Cliente
  */
 namespace Poupemais\Src\Lib;
+
+use Exception;
 use Poupemais\Src\Lib\{Usuario, Endereco, CPF, Investimento};
 use Poupemais\Src\Core\{ValidaDados, Erro};
 
@@ -30,15 +32,19 @@ class Cliente extends ValidaDados
     Investimento $investimento
     )
   {
-    $this->usuario = $usuario;
-    $this->endereco = $endereco;
-    $this->cpf = $cpf;
-    $this->nome = ucwords($this->quantidadeChars($this->validaInput($nome), 5, "Nome deve ter pelo menos 5 caracteres!", false));
-    $this->rg = $this->validaInput($rg);
-    $this->dataNasc = $this->validaInput($dataNasc);
-    $this->estadoCivil = ucfirst($this->validaInput($estadoCivil));
-    $this->telefone = $this->quantidadeChars($this->validaInput($telefone), 10, "Telefone deve ter pelo menos 10 digítos!");
-    $this->investimento = $investimento;
+    try {
+      $this->usuario = $usuario;
+      $this->endereco = $endereco;
+      $this->cpf = $cpf;
+      $this->nome = ucwords($this->quantidadeChars($this->validaInput($nome), 5, "Nome deve ter pelo menos 5 caracteres!", false));
+      $this->rg = $this->validaInput($rg);
+      $this->dataNasc = $this->validaInput($dataNasc);
+      $this->estadoCivil = ucfirst($this->validaInput($estadoCivil));
+      $this->telefone = $this->quantidadeChars($this->validaInput($telefone), 10, "Telefone deve ter pelo menos 10 digítos!");
+      $this->investimento = $investimento;
+    } catch (Exception $e) {
+      exit($e->getMessage());
+    }
   }
 
   # Getters Endereco
@@ -70,9 +76,14 @@ class Cliente extends ValidaDados
     return $this->nome;
   }
   
-  public function getRG(): string
+  public function getShowRG(): string
   {
     return $this->showRG($this->rg);
+  }
+
+  public function getRG(): string
+  {
+    return $this->removeCaracteres($this->rg);
   }
 
   public function getDataNasc(): string
@@ -86,6 +97,11 @@ class Cliente extends ValidaDados
   }
 
   public function getTelefone(): string
+  {
+    return $this->removeCaracteres($this->telefone);
+  }
+
+  public function getShowTelefone(): string
   {
     return $this->showTelefone($this->telefone);
   }
@@ -132,6 +148,4 @@ class Cliente extends ValidaDados
 
     return $telefone;
   }
-
-  # 
 }
