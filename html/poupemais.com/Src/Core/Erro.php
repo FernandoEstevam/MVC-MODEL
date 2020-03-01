@@ -57,11 +57,10 @@ class Erro extends Exception
 
   public static function setSuccess(string $msg): void
   {
-    throw new Exception(
-      json_encode(
-        array(
-          "status" => "success",
-          "dados" => $msg
-      )), 1);
+    echo json_encode(
+      array(
+        "status" => "success",
+        "dados" => $msg
+    ), 1);
   }
 }
