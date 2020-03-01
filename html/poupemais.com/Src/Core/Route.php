@@ -22,8 +22,7 @@ class Route
       $this->getUrl();
       $this->getRoute();
     } catch (Exception $e) {
-      echo $e->getMessage();
-      exit();
+      exit($e->getMessage());
     }
   }
 
@@ -66,21 +65,13 @@ class Route
     # Verifica se a classe existe
     if(!class_exists("Poupemais\\App\\Controllers\\" . $this->controller)) {
       require_once DIR_ROOT . $this->not_found;
-      throw new Exception(
-        json_encode(array(
-          "status" => "erro",
-          "dados" => "Classe não existe!"
-        )), 1);
+      Erro::setErro("Classe não existe!");
     };
     
     # Verifica se o metodo existe
     if(!method_exists("Poupemais\\App\\Controllers\\" . $this->controller, $this->metodo)) {
       require_once DIR_ROOT . $this->not_found;
-      throw new Exception(
-        json_encode(array(
-          "status" => "erro",
-          "dados" => "Método não existe!"
-        )),1);
+      Erro::setErro("Método não existe!");
     }
 
     # Instancia a class
