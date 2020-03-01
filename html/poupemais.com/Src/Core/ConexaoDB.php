@@ -21,7 +21,7 @@ class ConexaoDB
         DATA_LAYER_CONFIG['options']
       );
     } catch (PDOException $e) {
-      echo $e->getMessage();
+      exit($e->getMessage());
     }
   }
 }
