@@ -11,22 +11,24 @@ use Exception;
 
 class Investimento extends ValidaDados
 {
-  private string $plano;
+  private int $plano;
   private float $valorPlano;
   private array $vencimento;
   private int $aporte;
   private string $dataPrimeiraParcela;
-  
+  private string $data_contratacao;
+
   public function __construct(string $plano, float $valorPlano, int $aporte, string $dataPrimeiraParcela)
   {
     try {
-      $this->plano = $this->converInt($plano);
+      $this->plano = $this->validaInput($plano);
       $this->valorPlano = $this->validaInput($valorPlano);
       $this->dataPrimeiraParcela = $this->validaInput($dataPrimeiraParcela);
       $this->aporte = $this->validaInput($aporte);
       $this->vencimento = $this->vencimentos($this->plano, $this->valorPlano, $this->aporte, $this->dataPrimeiraParcela);
+      $this->data_contratacao = date("Y-m-d");
     } catch (Exception $e) {
-      echo $e->getMessage();
+      exit($e->getMessage());
     }
   }
     
@@ -43,11 +45,27 @@ class Investimento extends ValidaDados
     $vencimentos = [];
 
     $parcela = ['A','B','C','D','E','F','G','H','I','J','K','L'];
-    if($aporte === 2) $nParcelas = 1;
+    
+    switch ($this->plano) {
+      case 1:
+        $nParcelas = 6;
+      break;
+      case 2:
+        $nParcelas = 9;
+      break;
+      case 3:
+        $nParcelas = 12;
+      break;
+      default:
+      $nParcelas = 1;
+      break;
+    }
 
-      $dia = $dataPrimeiraParcela;
-      $mes = date("m");
-      $ano = date("Y");
+    if($aporte === 2) $nParcelas = 1;
+    
+    $dia = $dataPrimeiraParcela;
+    $mes = date("m");
+    $ano = date("Y");
     
     for($x = 0; $x < $nParcelas; $x++){
       $dado = date("Y/m/d",strtotime("+".($x+1)." month",mktime(0, 0, 0,$mes,$dia,$ano)));
@@ -60,7 +78,7 @@ class Investimento extends ValidaDados
   # Getters
   public function getPlano(): int
   {
-    return $this->plano . "Meses";
+    return $this->plano;
   }
   public function getVencimentos(): array
   {
@@ -71,4 +89,14 @@ class Investimento extends ValidaDados
   {
     return $this->valorPlano;
   }
-}
+
+  public function getDataContratacao(): string
+  {
+    return $this->data_contratacao;
+  }
+
+  public function getAporte(): string
+  {
+    return $this->aporte;
+  }
+} 
