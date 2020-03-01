@@ -43,7 +43,6 @@ class Investimento extends ValidaDados
     $vencimentos = [];
 
     $parcela = ['A','B','C','D','E','F','G','H','I','J','K','L'];
-    echo $nParcelas;
     if($aporte === 2) $nParcelas = 1;
 
       $dia = $dataPrimeiraParcela;
@@ -72,6 +71,4 @@ class Investimento extends ValidaDados
   {
     return $this->valorPlano;
   }
-  
-
 }
