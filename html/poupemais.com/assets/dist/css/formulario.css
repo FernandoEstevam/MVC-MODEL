@@ -155,7 +155,7 @@ html {
     #form-cadastro .dados-pessoais .estado-civil {
       grid-area: estado-civil; }
   #form-cadastro .endereco {
-    grid-template-areas: 'cep rua rua rua rua rua rua' 'numero complemento bairro bairro bairro bairro bairro' 'cidade cidade cidade cidade cidade uf uf'; }
+    grid-template-areas: 'cep rua rua rua rua rua rua' 'numero numero complemento complemento bairro bairro bairro' 'cidade cidade cidade cidade cidade cidade uf'; }
     #form-cadastro .endereco .cep {
       grid-area: cep; }
     #form-cadastro .endereco .rua {
