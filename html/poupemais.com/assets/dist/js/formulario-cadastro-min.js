@@ -1,0 +1,1 @@
+"use strict";const cpf=document.querySelector("input[name=cpf]"),rg=document.querySelector("input[name=rg]");
