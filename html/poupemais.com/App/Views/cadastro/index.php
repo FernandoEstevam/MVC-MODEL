@@ -159,4 +159,5 @@
   </form>
   <!-- Fim fieldset formulario cadastro -->
 </div>
+<script src="<?= DIR_JS ?>formulario-cadastro.js"></script>
 <script src="<?= DIR_JS ?>consulta-cep.js"></script>
