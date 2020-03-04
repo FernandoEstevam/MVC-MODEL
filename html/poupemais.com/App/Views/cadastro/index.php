@@ -19,15 +19,15 @@
         </div>
         <div class="wrapp-input cpf">
           <label for="cpf">CPF</label>
-          <input type="text" name="cpf" id="cpf" placeholder="xxx.xxx.xxx-xx" required />
+          <input type="text" name="cpf" id="cpf" placeholder="xxx.xxx.xxx-xx" maxlength="14" minlength="14" required />
         </div>
         <div class="wrapp-input rg">
           <label for="rg">RG</label>
-          <input type="text" name="rg" id="rg" placeholder="xx.xxx.xxx-x" required/>
+          <input type="text" name="rg" id="rg" placeholder="xx.xxx.xxx-x" maxlength="12" minlength="11" required/>
         </div>
         <div class="wrapp-input telefone">
           <label for="telefone">Telefone</label>
-          <input type="text" name="telefone" id="telefone" required placeholder="(xx) xxxx-xxx"/>
+          <input type="text" name="telefone" id="telefone" required placeholder="(xx) x.xxxx-xxxx" maxlength="11" minlength="10"/>
         </div>
         <div class="wrapp-input estado-civil">
           <label for="estado-civil">Estado Civil</label>
@@ -48,7 +48,8 @@
       <div class="group-input endereco">
         <div class="wrapp-input cep">
           <label for="cep">CEP</label>
-          <input type="text" name="cep" maxlength="9" minlength="8" id="cep" required placeholder="xxxxx-xxx"/>
+          <input type="text" name="cep" maxlength="8" minlength="8" id="cep" required placeholder="xxxxx-xxx"/>
+          <span id="ajax-response-cep"></span>
         </div>
         <div class="wrapp-input rua">
           <label for="logradouro">Rua</label>
@@ -146,7 +147,7 @@
       </div>
     </fieldset>
     <div class="wrapp-input response">
-      <span id="response"></span>
+      <span id="ajax-response"></span>
     </div>
     <!-- Fim fieldset Investimento -->
     <!-- Inicio fieldset Aceite termos -->
@@ -159,5 +160,7 @@
   </form>
   <!-- Fim fieldset formulario cadastro -->
 </div>
+<script src="<?= DIR_JS ?>mask.js"></script>
+<script src="<?= DIR_JS ?>consulta-cep.js"></script>
 <script src="<?= DIR_JS ?>formulario-cadastro.js"></script>
 <script src="<?= DIR_JS ?>consulta-cep.js"></script>
