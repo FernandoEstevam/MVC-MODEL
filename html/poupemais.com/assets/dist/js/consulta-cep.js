@@ -1,8 +1,6 @@
 'use strict';
 
-const cep = document.querySelector('#cep');
-const spanResponse = document.querySelector('#response');
-
+var ajaxResposta = document.querySelector('#ajax-response-cep');
 // Busca cep
 function buscarCep() {
 
@@ -29,7 +27,7 @@ function valida_input_cep(valor) {
   
   if(cep.value == "") {
     // verifica se campo cep possui valor informado
-    spanResponse.textContent = 'Informe o cep valido!';
+    ajaxResposta.textContent = 'Informe o cep valido!';
     return false;
   }
   
@@ -42,7 +40,7 @@ function valida_input_cep(valor) {
   
   //Valida o formato CEP
   if(!validacep.test(cepDigitado)) {
-    spanResponse.textContent = 'CEP deve ter 8 digitos!';
+    ajaxResposta.textContent = 'CEP deve ter 8 digitos!';
     return cep.focus();
   }
 
@@ -61,9 +59,10 @@ function limpa_forumlario() {
 
 function preenche_formulario(retorno) {
   if(retorno.erro) {
-    spanResponse.textContent = 'Preencha um CEP valído!'
+    ajaxResposta.textContent = 'Preencha um CEP válido!'
     return false;
   }
+  ajaxResposta.textContent = '';
   document.querySelector('#logradouro').value = retorno.logradouro;
   document.querySelector('#bairro').value = retorno.bairro;
   document.querySelector('#cidade').value = retorno.localidade;
