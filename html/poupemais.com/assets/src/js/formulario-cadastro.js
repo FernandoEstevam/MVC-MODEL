@@ -2,6 +2,7 @@
 
 const form_cadastro = document.querySelector('#form-cadastro');
 const ajaxResponse = document.querySelector('#ajax-response');
+const termos = document.querySelector('input[type=checkbox]');
 
 const frm = {
   nome: document.querySelector('input[name=nome]'),
@@ -29,11 +30,16 @@ const frm = {
 
 function sendCadastro(e) {
   e.preventDefault();
+  
+  // // Valida email e senha
+  // if(!valida_email_senha()) return;
+  
   // console.log(dados());
-  valida_email_senha();
+
+  verifica_termos();
 }
 
-
+// Dados formularios
 function dados() {
   return `nome=${frm.nome.value}&nascimento=${frm.data_nasc.value}&cpf=${frm.cpf.value}&`+
     `rg=${frm.rg.value}&telefone=${frm.telefone.value}&estado-civil=${frm.estadoCivil.value}&`+
@@ -44,6 +50,7 @@ function dados() {
     `aporte=${frm.aporte.value}`;
 }
 
+// Valida email e senha
 function valida_email_senha() {
   if(frm.email.value !== frm.confEmail.value) {
     ajaxResponse.textContent = 'Email e confirmação de email não confere!'
@@ -57,4 +64,28 @@ function valida_email_senha() {
   return true;
 }
 
+// verifica se o termo esta marcado
+function verifica_termos() {
+  const checked_div = document.querySelector('.checked-info');  
+
+  if(termos.checked == true) {
+    checked_div.classList.add('checked-true');
+    document.querySelector('button[type=submit]').disabled = false;
+  } else {
+    checked_div.classList.remove('checked-true');
+    document.querySelector('button[type=submit]').disabled = true;
+  }
+}
+
+function valida_input() {
+  Object.keys(frm).forEach((key) => {
+    console.log(key);
+  });
+}
+
+valida_input();
+
+// Evento click
+termos.addEventListener('click', verifica_termos);
+// Evento submit
 form_cadastro.addEventListener('submit', sendCadastro);
