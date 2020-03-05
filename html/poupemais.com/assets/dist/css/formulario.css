@@ -223,3 +223,13 @@ html {
     border-radius: 5px;
     background-color: #0046b6;
     color: #fff; }
+  #form-cadastro .btn:disabled {
+    background-color: #d3d3d3;
+    color: #fff;
+    cursor: default; }
+  #form-cadastro .checked-info {
+    width: 100%;
+    text-align: center;
+    font-size: 10px; }
+  #form-cadastro .checked-true {
+    display: none; }

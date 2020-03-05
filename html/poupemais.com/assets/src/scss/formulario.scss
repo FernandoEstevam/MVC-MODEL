@@ -295,4 +295,17 @@
     background-color: $color-principal-azul-escuro;
     color: $font-color-white;
   }
+  .btn:disabled {
+    background-color:#d3d3d3;
+    color: #fff;
+    cursor: default;
+  }
+  .checked-info {
+    width: 100%;
+    text-align: center;
+    font-size: 10px;
+  }
+  .checked-true {
+    display: none;
+  }
 }
