@@ -28,15 +28,19 @@ const frm = {
   aporte: document.querySelector('input[name=aporte]')
 }
 
-function sendCadastro(e) {
-  e.preventDefault();
+function validacao() {
   
-  // // Valida email e senha
-  // if(!valida_email_senha()) return;
-  
-  // console.log(dados());
+  // Valida email e senha
+  if(!valida_email_senha()) return;
 
+  // Verifica termos
   verifica_termos();
+
+  // Verifica se input esta vazio
+  if(!valida_input())return;
+  
+  // Limpa dados
+  limpa_campos();
 }
 
 // Dados formularios
@@ -46,7 +50,7 @@ function dados() {
     `cep=${frm.cep.value}&logradouro=${frm.logradouro.value}&numero=${frm.numero.value}&`+
     `complemento=${frm.compl.value}&bairro=${frm.bairro.value}&cidade=${frm.cidade.value}&uf=${frm.uf.value}&`+
     `email=${frm.email.value}&conf-email=${frm.confEmail.value}&password=${frm.senha.value}&`+
-    `conf-password=${frm.confSenha.value}&plano=${frm.plano.value}&valor=${frm.valor.value}&vecimento=${frm.vencimento.value}&`+
+    `conf-password=${frm.confSenha.value}&plano=${frm.plano.value}&valor=${frm.valor.value}&vencimento=${frm.vencimento.value}&`+
     `aporte=${frm.aporte.value}`;
 }
 
@@ -78,12 +82,69 @@ function verifica_termos() {
 }
 
 function valida_input() {
-  Object.keys(frm).forEach((key) => {
-    console.log(key);
+  let inputs = document.querySelectorAll('input');
+  let selects = document.querySelectorAll('select');
+  let retorno = true;
+
+  inputs.forEach(element => {
+    if(element.value === '' && element.attributes.name.value != 'complemento' ) {
+      retorno = false;
+    }
+  });
+
+  selects.forEach(element => {
+    if(element.value === '') {
+      retorno = false;
+    }
+  });
+
+  if(retorno == false) {
+    ajaxResponse.textContent = 'Preencha todos os campos!';
+  } else {
+    ajaxResponse.textContent = '';
+  }
+
+  return retorno;
+}
+
+function limpa_campos() {
+  let inputs = document.querySelectorAll('input');
+  let selects = document.querySelectorAll('select');
+
+  inputs.forEach(element => {
+    element.value = '';
+  });
+
+  selects.forEach(element => {
+    element.value = '';
   });
 }
 
-valida_input();
+// Envia formulario cadastro 
+function sendCadastro(e) {
+  e.preventDefault();
+
+  const url = form_cadastro.action;
+  const xhr = new XMLHttpRequest();
+  
+  // Validacao dos inputs
+  validacao();
+
+  xhr.open('POST', url, true);
+  xhr.onreadystatechange = () => {
+    if(xhr.status == 200 && xhr.readyState == 4) {
+      let responseJson = JSON.parse(xhr.responseText);
+  
+      if(responseJson.status === 'erro') {	
+        ajaxResponse.textContent = responseJson.dados;	
+      }	    
+      ajaxResponse.textContent = responseJson.dados;	
+      limpa_campos();
+    }
+  }
+  xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+  xhr.send(dados());
+}
 
 // Evento click
 termos.addEventListener('click', verifica_termos);
