@@ -20,7 +20,7 @@ function sendlogin(e){
   xhr.addEventListener('loadend', transfer_complete, false);	
   // xhr.addEventListener('error', transfer_falied, false);	
   // xhr.addEventListener('abort', transfer_canceled, false);	
-  xhr.open('POST', url, true);	  xhr.open('POST', url, true);
+  xhr.open('POST', url, true);
   xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");	  
   xhr.send(dados);
 }	
