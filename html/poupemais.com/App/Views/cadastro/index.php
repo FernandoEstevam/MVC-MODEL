@@ -156,11 +156,11 @@
       <a href="#">Aceito termo de condição</a>
     </div>
     <!-- Fim fieldset Aceite termos -->
-    <button type="submit" class="btn btn-cadastro">Cadastrar</button>
+    <div class="checked-info"><span>click no aceite termos</span></div>
+    <button type="submit" class="btn btn-cadastro" disabled>Cadastrar</button>
   </form>
   <!-- Fim fieldset formulario cadastro -->
 </div>
 <script src="<?= DIR_JS ?>mask.js"></script>
-<script src="<?= DIR_JS ?>consulta-cep.js"></script>
 <script src="<?= DIR_JS ?>formulario-cadastro.js"></script>
 <script src="<?= DIR_JS ?>consulta-cep.js"></script>
