@@ -47,16 +47,6 @@ function valida_input_cep(valor) {
   return true;
 }
 
-function limpa_forumlario() {
-  document.querySelector('#cep').value = '';
-  document.querySelector('#endereco').value = '';
-  document.querySelector('#numero').value = '';
-  document.querySelector('#complemento').value = '';
-  document.querySelector('#bairro').value = '';
-  document.querySelector('#cidade').value = '';
-  document.querySelector('#uf').value = '';
-}
-
 function preenche_formulario(retorno) {
   if(retorno.erro) {
     ajaxResposta.textContent = 'Preencha um CEP válido!'
