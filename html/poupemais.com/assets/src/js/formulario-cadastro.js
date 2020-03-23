@@ -38,9 +38,6 @@ function validacao() {
 
   // Verifica se input esta vazio
   if(!valida_input())return;
-  
-  // Limpa dados
-  limpa_campos();
 }
 
 // Dados formularios
@@ -56,8 +53,8 @@ function dados() {
 
 // Valida email e senha
 function valida_email_senha() {
-  if(frm.email.value !== frm.confEmail.value) {
-    ajaxResponse.textContent = 'Email e confirmação de email não confere!'
+  ajaxResponse.textContent = 'Email e confirmação de email não confere!'
+    if(frm.email.value !== frm.confEmail.value) {
     return false;
   }
   if(frm.senha.value !== frm.confSenha.value) {
@@ -134,7 +131,6 @@ function sendCadastro(e) {
   xhr.onreadystatechange = () => {
     if(xhr.status == 200 && xhr.readyState == 4) {
       let responseJson = JSON.parse(xhr.responseText);
-  
       if(responseJson.status === 'erro') {	
         ajaxResponse.textContent = responseJson.dados;	
       }	    
