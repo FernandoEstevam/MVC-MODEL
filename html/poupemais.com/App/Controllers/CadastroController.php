@@ -6,15 +6,15 @@
 namespace Poupemais\App\Controllers;
 
 use Exception;
-use Poupemais\App\Models\CadastroDB;
-use Poupemais\Src\Core\{ConexaoDB, Controller, Erro, ValidaDados};
+use Poupemais\App\Models\{CadastroModel, InvestimentoModel, UsuarioModel};
+use Poupemais\Src\Core\{Controller, Erro, ValidaDados};
 use Poupemais\Src\Lib\{CPF,Endereco, Investimento, Usuario, ViewModel,Cliente};
 
 class CadastroController extends Controller
 {
   private Cliente $cliente;
   private ViewModel $viewDados;
-  private CadastroDB $cad_db;
+  private CadastroModel $cad_db;
 
   public function index()
   { 
@@ -64,7 +64,7 @@ class CadastroController extends Controller
           $_POST['vencimento'],
         )
       );
-      $this->cadastrado($this->cliente);
+      $this->cadastrado($this->cliente); 
       Erro::setSuccess("Cadastro efetuado com sucesso");
     } catch (Exception $e) {
       exit($e->getMessage());
@@ -73,9 +73,16 @@ class CadastroController extends Controller
 
   # Cadastro no banco de dados 
   private function cadastrado (Cliente $cliente): void
-  {
-    $this->cad_db = new CadastroDB();
-    $this->cad_db->cadastraUsuario($cliente);
+  {    
+    if(!$this->user_db->existUser($cliente->getUsuario()->getLogin())) {
+      Erro::setErro("Usuário já cadastrado!");
+    }    
+    
+    (new UsuarioModel())->save($cliente);
+    $id = (new InvestimentoModel())->save($cliente)->findByLastID();
+    var_dump($id); 
+    
+    $this->cad_db = new CadastroModel();
     $this->cad_db->cadastraCliente($cliente);
     $this->cad_db->cadastraInvestimento($cliente);
     $this->cad_db->cadastraVencimentos($cliente);

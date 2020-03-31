@@ -10,7 +10,7 @@ use Poupemais\Src\Lib\{Cliente,Crud};
 use PDOException;
 use PDO;
 
-class CadastroDB extends Crud
+class CadastroModel extends Crud
 {
   private $query;
 

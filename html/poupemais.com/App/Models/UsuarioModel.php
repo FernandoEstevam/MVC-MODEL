@@ -9,10 +9,10 @@ namespace Poupemais\App\Models;
 
 use PDO;
 use PDOException;
-use Poupemais\Src\Lib\{Crud, CLiente};
+use Poupemais\Src\Lib\{Crud, Cliente};
 use Poupemais\Src\Core\Erro;
 
-class UsuarioDB extends Crud 
+class UsuarioModel extends Crud 
 {
   private $query;
 
@@ -26,14 +26,13 @@ class UsuarioDB extends Crud
         "WHERE id = ?",
         array($id)
       );
-
-      $retorno = $this->query->fetch(PDO::FETCH_ASSOC);
-
+     
       $row = $this->query->rowCount();
       if($row == 0) {
         Erro::setErro("Nenhum registro encontrado!");
       }
-
+      $retorno = $this->query->fetch(PDO::FETCH_ASSOC);
+      
       return $retorno;
 
     } catch (PDOException $e) {

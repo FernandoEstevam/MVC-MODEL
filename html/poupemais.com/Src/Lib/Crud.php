@@ -6,7 +6,6 @@ namespace Poupemais\Src\Lib;
 
 use PDOException;
 use Poupemais\Src\Core\ConexaoDB;
-use Poupemais\Src\Core\Erro;
 
 class Crud extends ConexaoDB
 {
