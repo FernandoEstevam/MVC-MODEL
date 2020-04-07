@@ -6,22 +6,27 @@
 namespace Poupemais\App\Controllers;
 
 use Exception;
-use Poupemais\App\Models\{CadastroModel, InvestimentoModel, UsuarioModel};
+use Poupemais\App\Models\{ClienteModel, UserModel, InvestimentoModel, VencimentosModel};
 use Poupemais\Src\Core\{Controller, Erro, ValidaDados};
-use Poupemais\Src\Lib\{CPF,Endereco, Investimento, Usuario, ViewModel,Cliente};
+use Poupemais\Src\Lib\{CPF,Endereco, Investimento, Usuario, PlanoView,Cliente, Transaction};
 
 class CadastroController extends Controller
 {
+  private PlanoView $showPlanos;
+  private Transaction $transaction;  
   private Cliente $cliente;
-  private ViewModel $viewDados;
-  private CadastroModel $cad_db;
+  
+  public function __construct()
+  {
+    parent::__construct();
+    $this->showPlanos = new PlanoView;
+  } 
 
   public function index()
   { 
-    try {
-      $this->viewDados = new ViewModel();
-      $plano = $this->viewDados->selectAllPlano();
-      $this->view->render('','cadastro/index',['planos' => $plano],'');
+    try {      
+      $planos = $this->showPlanos->all();
+      $this->view->render('','cadastro/index',['planos' => $planos],'');
     } catch (Exception $e) {
       exit($e->getMessage());
     }
@@ -64,7 +69,7 @@ class CadastroController extends Controller
           $_POST['vencimento'],
         )
       );
-      $this->cadastrado($this->cliente); 
+      $this->cadastrado($this->cliente);
       Erro::setSuccess("Cadastro efetuado com sucesso");
     } catch (Exception $e) {
       exit($e->getMessage());
@@ -74,17 +79,38 @@ class CadastroController extends Controller
   # Cadastro no banco de dados 
   private function cadastrado (Cliente $cliente): void
   {    
-    if(!$this->user_db->existUser($cliente->getUsuario()->getLogin())) {
-      Erro::setErro("Usuário já cadastrado!");
-    }    
+    // $this->transaction = new Transaction;
     
-    (new UsuarioModel())->save($cliente);
-    $id = (new InvestimentoModel())->save($cliente)->findByLastID();
-    var_dump($id); 
+    // $this->transaction->transactions(function() use($cliente) {
+    //   $this->transaction->model(UserModel::class)->insert($cliente->getUsuario()->getInsert());
+
+    //   $user = (new UserModel)->find("id","email",$cliente->getUsuario()->getLogin());
+    //   $this->transaction->model(ClienteModel::class)->insert($cliente->getInsert($user->id));
+
+     
+      $clt = (new ClienteModel)->find("id","cpf",$cliente->getCPF()->getCPF());
+    //   $this->transaction->model(InvestimentoModel::class)->insert($cliente->getInvestimento()->getInsert($clt->id));
     
-    $this->cad_db = new CadastroModel();
-    $this->cad_db->cadastraCliente($cliente);
-    $this->cad_db->cadastraInvestimento($cliente);
-    $this->cad_db->cadastraVencimentos($cliente);
+        $id_invest = (new InvestimentoModel)->find("id","id_cliente",$clt->id);
+      
+        $vecimentos = $cliente->getInvestimento()->getVencimentos();
+        
+        foreach($vecimentos as $vecimento) {
+
+          $this->transaction->model(VencimentosModel::class)->insert(
+            [
+              "parcela" => $vecimento["parcela"],
+              "vencimento" => $vecimento["vencimento"],
+              "valor" => $vecimento["valor"],
+              "data_pagamento" => "",
+              "situacao" => "aberto",
+              "id_investimento" => $id_invest,
+            ]
+          );
+        }
+
+    // });
+    // print_r($cliente->getInvestimento()->getVencimentos());
+      
   }
 }

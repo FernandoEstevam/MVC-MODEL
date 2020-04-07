@@ -89,4 +89,14 @@ class Usuario extends ValidaDados
   {
     return $this->data_cadastro;
   }
+
+  public function getInsert(): array
+  {
+    return [
+      "email" => $this->getLogin(),
+      "senha" => $this->getPasswd(),
+      "data_cadastro" => $this->getDataCadastro(),
+      "status" => "confirmar",
+    ];
+  }
 }

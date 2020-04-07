@@ -148,4 +148,24 @@ class Cliente extends ValidaDados
 
     return $telefone;
   }
+
+  public function getInsert(int $id_user): array
+  {
+    return [
+      "nome" => $this->getNome(),
+      "data_nascimento" => $this->getDataNasc(),
+      "cpf" => $this->getCPF()->getCPF(),
+      "rg" => $this->getRG(),
+      "estado_civil" => $this->getEstadoCivil(),
+      "telefone" => $this->getTelefone(),
+      "endereco" => $this->getEndereco()->getlogradouro(),
+      "numero" => $this->getEndereco()->getNumero(),
+      "complemento" => $this->getEndereco()->getCompl(),
+      "bairro" => $this->getEndereco()->getBairro(),
+      "cep" => $this->getEndereco()->getCep(),
+      "cidade" => $this->getEndereco()->getCidade(),
+      "uf" => $this->getEndereco()->getUf(),
+      "id_usuario" => $id_user
+    ];
+  }
 }

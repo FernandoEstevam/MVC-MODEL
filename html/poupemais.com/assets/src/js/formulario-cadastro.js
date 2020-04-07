@@ -135,7 +135,6 @@ function sendCadastro(e) {
         ajaxResponse.textContent = responseJson.dados;	
       }	    
       ajaxResponse.textContent = responseJson.dados;	
-      limpa_campos();
     }
   }
   xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");

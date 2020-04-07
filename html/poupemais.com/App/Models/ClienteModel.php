@@ -4,7 +4,7 @@ namespace Poupemais\App\Models;
 
 use Poupemais\Src\Core\Model;
 
-class VencimentosModel extends Model
+class ClienteModel extends Model
 {
-  protected $table = "vencimentos";
+  protected $table = "clientes";
 }

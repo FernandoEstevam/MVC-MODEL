@@ -15,7 +15,6 @@ class Crud extends ConexaoDB
   private function prepareExec(string $prep, array $exec): void
   {
     try {
-      $this->conn->beginTransaction();
       
       $this->crud = $this->conn->prepare($prep);
   
@@ -26,12 +25,8 @@ class Crud extends ConexaoDB
         exit($e->getMessage());
       }
 
-      $this->conn->commit();
-
     } catch (PDOException $e) {
       
-      $this->conn->rollBack();
-
       exit($e->getMessage());
     }
   }
@@ -49,4 +44,21 @@ class Crud extends ConexaoDB
     $this->prepareExec("INSERT INTO {$table} VALUES ({$value})", $exec);
     return $this->crud;
   }
+
+
+  public function beginTransaction()
+  {
+    return $this->conn->beginTransaction();
+  }
+
+  public function commit()
+  {
+    return $this->conn->commit();
+  }
+
+  public function rollBack()
+  {
+    return $this->conn->rollBack();
+  }
+
 }

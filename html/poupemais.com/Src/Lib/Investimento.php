@@ -99,4 +99,16 @@ class Investimento extends ValidaDados
   {
     return $this->aporte;
   }
+
+  public function getInsert(int $id_cliente): array
+  {
+    return [
+      "valor" => $this->getValorPlano(),
+      "data_contratacao" => $this->getDataContratacao(),
+      "situacao" => "aberto",
+      "id_cliente" => $id_cliente,
+      "id_plano" => $this->getPlano(),
+      "id_aporte" => $this->getAporte()
+    ];
+  }
 } 

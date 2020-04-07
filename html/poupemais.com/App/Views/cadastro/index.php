@@ -110,7 +110,7 @@
           <select name="plano" id="plano" required>
             <option value="" selected disabled hidden>Planos</option>
             <?php foreach ($data['planos'] as $plano) :?>
-              <option value="<?=$plano['id']?>"><?=$plano['nome']?></option>
+              <option value="<?=$plano->id?>"><?=$plano->nome?></option>
             <?php endforeach; ?>
           
           </select>
