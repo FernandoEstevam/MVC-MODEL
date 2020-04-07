@@ -68,7 +68,7 @@ class Investimento extends ValidaDados
     $ano = date("Y");
     
     for($x = 0; $x < $nParcelas; $x++){
-      $dado = date("Y/m/d",strtotime("+".($x+1)." month",mktime(0, 0, 0,$mes,$dia,$ano)));
+      $dado = date("Y-m-d",strtotime("+".($x+1)." month",mktime(0, 0, 0,$mes,$dia,$ano)));
       $valor = $v; 
       array_push($vencimentos, ['parcela' => $parcela[$x] , 'vencimento' => $dado ,'valor'=>$valor]); 
     }
