@@ -40,10 +40,10 @@ class CadastroController extends Controller
 
       $this->cliente = new Cliente(
         new Usuario(
-         $_POST['email'],
-         $_POST['password'],
-         $_POST['conf-email'],
-         $_POST['conf-password'] 
+          $_POST['email'],
+          $_POST['password'],
+          $_POST['conf-email'],
+          $_POST['conf-password'] 
         ),
         new Endereco(
           $_POST['cep'],
@@ -57,11 +57,11 @@ class CadastroController extends Controller
         new CPF(
           $_POST['cpf']
         ),
-        $_POST['nome'],
-        $_POST['rg'],
-        $_POST['nascimento'],
-        $_POST['estado-civil'],
-        $_POST['telefone'],
+          $_POST['nome'],
+          $_POST['rg'],
+          $_POST['nascimento'],
+          $_POST['estado-civil'],
+          $_POST['telefone'],
         new Investimento(
           $_POST['plano'],
           $_POST['valor'],
@@ -79,38 +79,35 @@ class CadastroController extends Controller
   # Cadastro no banco de dados 
   private function cadastrado (Cliente $cliente): void
   {    
-    // $this->transaction = new Transaction;
+    $this->transaction = new Transaction;
     
-    // $this->transaction->transactions(function() use($cliente) {
-    //   $this->transaction->model(UserModel::class)->insert($cliente->getUsuario()->getInsert());
+    $this->transaction->transactions(function() use($cliente) {
+      # Cadastra Usuario
+      $this->transaction->model(UserModel::class)->insert($cliente->getUsuario()->getInsert());
 
-    //   $user = (new UserModel)->find("id","email",$cliente->getUsuario()->getLogin());
-    //   $this->transaction->model(ClienteModel::class)->insert($cliente->getInsert($user->id));
+      # Cadastra Cliente
+      $user = (new UserModel)->find("id","email",$cliente->getUsuario()->getLogin());
+      $this->transaction->model(ClienteModel::class)->insert($cliente->getInsert($user->id));
 
-     
+      # Cadastra Invetimento
       $clt = (new ClienteModel)->find("id","cpf",$cliente->getCPF()->getCPF());
-    //   $this->transaction->model(InvestimentoModel::class)->insert($cliente->getInvestimento()->getInsert($clt->id));
-    
-        $id_invest = (new InvestimentoModel)->find("id","id_cliente",$clt->id);
+      $this->transaction->model(InvestimentoModel::class)->insert($cliente->getInvestimento()->getInsert($clt->id));
       
-        $vecimentos = $cliente->getInvestimento()->getVencimentos();
-        
+      # Cdadastra Vencimentos
+      $id_invest = (new InvestimentoModel)->find("id","id_cliente",$clt->id);
+      $vecimentos = $cliente->getInvestimento()->getVencimentos();  
         foreach($vecimentos as $vecimento) {
-
           $this->transaction->model(VencimentosModel::class)->insert(
             [
               "parcela" => $vecimento["parcela"],
               "vencimento" => $vecimento["vencimento"],
               "valor" => $vecimento["valor"],
-              "data_pagamento" => "",
+              "data_pagamento" => null,
               "situacao" => "aberto",
-              "id_investimento" => $id_invest,
+              "id_investimento" => $id_invest->id,
             ]
           );
         }
-
-    // });
-    // print_r($cliente->getInvestimento()->getVencimentos());
-      
+    });
   }
 }
