@@ -32,7 +32,7 @@ class Endereco extends ValidaDados
       $this->cep = $this->quantidadeChars($this->validaInput($cep), 8, "CEP deve ter 8 digítos");
       $this->logradouro = ucwords($this->validaInput($logradouro));
       $this->numero = $this->validaInput($numero);
-      $this->compl =  $this->verificaComplemento($this->validaInput($compl));
+      $this->compl =  $this->verificaComplemento();
       $this->bairro = ucwords($this->validaInput($bairro));
       $this->cidade = ucwords($this->validaInput($cidade));
       $this->uf = strtoupper($this->validaInput($uf));
@@ -42,13 +42,13 @@ class Endereco extends ValidaDados
   }
 
   # Verifica se complemento foi informado
-  private function verificaComplemento($compl): string
+  private function verificaComplemento(): string
   {
-    if(!isset($compl) || empty($compl)) {
-      return $compl = '';
+    if(!isset($_POST['complemento']) || empty($_POST['complemento'])) {
+      return '';
     }
 
-    return $this->validaInput($compl);
+    return $this->validaInput($_POST['complemento']);
   }
 
   # Getters

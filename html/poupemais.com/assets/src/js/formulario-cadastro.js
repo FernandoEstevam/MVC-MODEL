@@ -96,7 +96,7 @@ function valida_input() {
     }
   });
 
-  if(retorno == false) {
+  if(retorno === false) {
     ajaxResponse.textContent = 'Preencha todos os campos!';
   } else {
     ajaxResponse.textContent = '';
