@@ -60,7 +60,6 @@ class Investimento extends ValidaDados
       $nParcelas = 1;
       break;
     }
-
     if($aporte === 2) $nParcelas = 1;
     
     $dia = $dataPrimeiraParcela;

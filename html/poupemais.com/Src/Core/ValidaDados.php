@@ -27,7 +27,6 @@ class ValidaDados extends PasswordHash
 
     foreach ($_POST as $key => $value) {
       if(empty($_POST[$key])) {
-        echo $key;
         if($key !== "complemento") {
           $i++;
         }

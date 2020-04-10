@@ -43,13 +43,14 @@ function validacao() {
 // Dados formularios
 function dados() {
   let valor = formatFloat(frm.valor.value);
+  let aporte = document.querySelector("[name=aporte]:checked").value;
   return `nome=${frm.nome.value}&nascimento=${frm.data_nasc.value}&cpf=${frm.cpf.value}&`+
     `rg=${frm.rg.value}&telefone=${frm.telefone.value}&estado-civil=${frm.estadoCivil.value}&`+
     `cep=${frm.cep.value}&logradouro=${frm.logradouro.value}&numero=${frm.numero.value}&`+
     `complemento=${frm.compl.value}&bairro=${frm.bairro.value}&cidade=${frm.cidade.value}&uf=${frm.uf.value}&`+
     `email=${frm.email.value}&conf-email=${frm.confEmail.value}&password=${frm.senha.value}&`+
     `conf-password=${frm.confSenha.value}&plano=${frm.plano.value}&valor=${valor}&vencimento=${frm.vencimento.value}&`+
-    `aporte=${frm.aporte.value}`;
+    `aporte=${aporte}`;
 }
 
 // Valida email e senha
