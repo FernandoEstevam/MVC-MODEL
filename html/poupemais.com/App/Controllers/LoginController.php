@@ -5,7 +5,7 @@
 
 namespace Poupemais\App\Controllers;
 
-use Poupemais\Src\Core\{Controller, Erro, PasswordHash, Session};
+use Poupemais\Src\Core\{Controller, Erro, Session};
 use Poupemais\Src\Lib\Login;
 use Exception;
 
@@ -13,7 +13,7 @@ class LoginController extends Controller
 {
   private Login $login;
   private Session $session;
-  
+
   public function index(): void
   {
     try {
@@ -32,27 +32,19 @@ class LoginController extends Controller
         Erro::setErro("Informe usuário e/ou senha!");
       }
     }
-    
-    $loginDB = 'fernandoestevam23@gmail.com';
-    $nomeDB = 'Fernando';
-    $senha = '709244';
-    $passwdDB = PasswordHash::hashPasswd($senha);
-    
+
     $this->login = new Login(
       $_POST['login'],
-      $_POST['password'],
-      $loginDB,
-      $passwdDB,
-      $nomeDB
+      $_POST['password']
     );
       
       $this->login->iniciaSession();
       
-      $this->redirect(($nomeDB));
+      $this->redirect();
     }
     
     # Redirect page
-  private function redirect($nomeDB): void
+  private function redirect(): void
   {
     if(!isset($_SESSION) || empty($_SESSION)) {
       $this->session->destructSession();
