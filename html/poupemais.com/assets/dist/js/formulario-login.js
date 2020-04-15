@@ -1,4 +1,4 @@
-'use strict';	'use strict';
+'use strict';
 
 const frmLogin = document.querySelector('#form-login');
 let resposta = document.querySelector(".response");	
@@ -33,6 +33,8 @@ function transfer_complete() {
       resposta.textContent = responseJson.dados;	
     }	    
     resposta.textContent = responseJson.dados;	
+
+    window.location.href = '/dashboard';
   }	
 }
 

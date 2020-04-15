@@ -80,8 +80,7 @@ class Session
     $this->verifyIdSession();
     if(!isset($_SESSION['login']) || !isset($_SESSION['canary'])) {
       $this->destructSession();
-      Erro::setErro("Acesso negado. Efetue o login e tente novamente");
-      return;
+      exit();
     } 
     
     if($_SESSION['time'] >= time() - $this->timeSession) {

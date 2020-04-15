@@ -51,13 +51,12 @@ class LoginController extends Controller
       Erro::setErro("Acesso não autorizado!");
     }
     
-    if($_SESSION['name'] !== $nomeDB) {
+    if($_SESSION['email'] !== $_POST['login']) {
       $this->session->destructSession();
       Erro::setErro("Acesso não autorizado!");
     }
 
-    // http://www.example.com/
-    header('Location: /dashboard');
+    Erro::setSuccess("Login efetuado com sucesso, redirecionando...");
 
   }
 }

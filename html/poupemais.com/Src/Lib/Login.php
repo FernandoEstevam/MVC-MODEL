@@ -56,15 +56,15 @@ class Login extends ValidaDados
     $this->userModel = new UserModel;
     $this->clienteModel = new ClienteModel;
 
-    $user = $this->userModel->find("email,senha","email",$login);
+    $user = $this->userModel->find("id,email,senha","email",$login);
     
     if(!PasswordHash::verifyHash($this->getPasswd(), $user->senha)){
       Erro::setErro("Usuário e/ou senha inválido!");
     }
     
-    $cliente = $this->userModel->find("nome","id_usuario", $user->id);
+    $cliente = $this->clienteModel->find("nome","id_usuario", $user->id);
     $this->nome = $cliente->nome;
-
+    
     return true;
   }
 
