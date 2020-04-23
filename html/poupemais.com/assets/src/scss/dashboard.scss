@@ -1,0 +1,147 @@
+// /* Arquivo SCSS Principal */  
+// https://colorlib.com/etc/lf/Login_v1/index.html
+// // Base 
+@import "./extra/variaveis.scss";  
+// // Componentes 
+@import "./extra/suporte.scss";
+
+.dashboard {
+  display: flex;
+  justify-content: space-between;
+  
+  .nav {
+    width: 20%;
+    height: 100vh;
+    background-color: #008cff;
+    padding: 20px 0;
+
+    .nome-cliente {
+      font-size: $font-size-sm;
+      font-weight: normal;
+      color: #fff;
+      margin-left: 20px;
+
+      display: flex;
+      align-items: center;
+
+      span {
+        display: flex;
+        align-items: center;
+        text-align: center;
+      }
+      .material-icons.fffPersona {
+        color: #fff;
+      }
+    }
+    
+    .menu-list {
+      
+      li{
+        font-size: $font-size-sm;
+        color: #fff;
+        cursor: pointer;
+        padding: 10px 20px;
+        
+        a {
+          display: flex;
+          align-items: center;
+          color: #fff;
+        }
+      }
+      li:hover {
+        background-color: #008eff;
+      }
+    }
+    span {
+      margin-right: 10px;
+    }
+  }
+
+  .painel {
+    width: 80%;
+    padding: 20px;
+    background-color: #eee;
+
+    .painel-aviso {
+      width: 100%;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+            
+      .info-titulos {
+
+        h4 {
+          font-size: $font-nome-cliente;
+          font-weight: 500;
+          color: $font-color-cinza;
+        }
+        span {
+          font-size: 16px;
+        }
+
+        .dados {
+          display: flex;
+          flex-direction: row;
+          width: 100%;
+        }
+      }
+
+      div {
+        width: 32%;
+        height: 80px;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background-color: #fff;
+        border-radius: 5px;
+        
+        span {
+          width: 100%;
+          text-align: center;
+          font-size: $font-size-sm;
+        }
+      }
+    }
+    
+    table {
+      width: 100%;
+      margin: 20px auto;
+      text-align: center;
+      border-collapse: collapse;
+      background-color: #fff;
+      border-radius: 10px;
+      padding: 20px 10px;
+
+      thead {
+        tr {
+          th {
+            font-size: $font-nome-cliente;
+            color: $font-color-cinza;
+            font-weight: 400;
+          }
+        }
+      }
+      tbody {
+        tr {
+          td {
+            font-size: $font-size-sm;
+            color: #444;
+          }
+        }
+        tr:nth-child(odd) {
+          background-color: #f5f5f5;
+        }
+        tr:nth-child(even):hover {
+          background-color: #f2f2f2;
+        }
+        tr:nth-child(odd):hover {
+          background-color: #eee;
+        }
+      }
+
+    }
+  }
+}

@@ -66,7 +66,29 @@ abstract class Model
       Erro::setErro("Nenhum registro encontrado.");
     }
 
+    if($stmt->rowCount() > 1) {
+      return $stmt->fetchAll();
+    }
+
     return $stmt->fetch();
+  }
+
+  # Encontrar All
+  final public function findAll(string $column, string $field, string $value): array
+  {
+    $sql = "SELECT {$column} FROM {$this->table} WHERE {$field} = :{$field}";
+
+    $stmt = $this->connection->prepare($sql);
+
+    $stmt->bindValue(":{$field}", $value);
+
+    $stmt->execute();
+
+    if($stmt->rowCount() === 0) {
+      Erro::setErro("Nenhum registro encontrado.");
+    }
+
+    return $stmt->fetchAll();
   }
   
   # Deletar

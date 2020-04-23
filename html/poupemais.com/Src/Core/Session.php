@@ -88,7 +88,12 @@ class Session
       return;
     }
       $this->destructSession();
-      Erro::setErro("Sua sessão expirou. Faça o login novamente!");
+      exit("
+        <script>
+          alert('Sua sessão expirou. Faça o login novamente!');
+          window.location.href = '/login';
+        </script>
+      ");
   }
 
   # Destruir a session existente

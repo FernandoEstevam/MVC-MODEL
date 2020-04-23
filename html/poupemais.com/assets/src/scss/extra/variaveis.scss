@@ -1,4 +1,3 @@
-// @import url('https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap');
 
 // HTML
 $fundo-geral: #fff;
@@ -14,8 +13,9 @@ $font-family: 'Ubuntu',sans-serif;
 
 // Font size
 $font-footer: 14px / #{$font-size}em; 
+$font-size-sm: 16px / #{$font-size}em;
 $font-size-btn: 16px / #{$font-size}em;
-
+$font-nome-cliente: 18px / #{$font-size}em;
 // font color
 $font-color-white: #fff;
 $font-color-cinza: #333;

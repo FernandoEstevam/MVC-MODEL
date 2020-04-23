@@ -1,0 +1,102 @@
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap");
+html {
+  font: normal normal 20px/2.5 "Ubuntu", sans-serif; }
+
+.vertical-center {
+  display: flex;
+  align-items: center;
+  justify-content: center; }
+
+.btn {
+  display: block;
+  border: none;
+  cursor: pointer; }
+
+.dashboard {
+  display: flex;
+  justify-content: space-between; }
+  .dashboard .nav {
+    width: 20%;
+    height: 100vh;
+    background-color: #008cff;
+    padding: 20px 0; }
+    .dashboard .nav .nome-cliente {
+      font-size: 0.8em;
+      font-weight: normal;
+      color: #fff;
+      margin-left: 20px;
+      display: flex;
+      align-items: center; }
+      .dashboard .nav .nome-cliente span {
+        display: flex;
+        align-items: center;
+        text-align: center; }
+      .dashboard .nav .nome-cliente .material-icons.fffPersona {
+        color: #fff; }
+    .dashboard .nav .menu-list li {
+      font-size: 0.8em;
+      color: #fff;
+      cursor: pointer;
+      padding: 10px 20px; }
+      .dashboard .nav .menu-list li a {
+        display: flex;
+        align-items: center;
+        color: #fff; }
+    .dashboard .nav .menu-list li:hover {
+      background-color: #008eff; }
+    .dashboard .nav span {
+      margin-right: 10px; }
+  .dashboard .painel {
+    width: 80%;
+    padding: 20px;
+    background-color: #eee; }
+    .dashboard .painel .painel-aviso {
+      width: 100%;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between; }
+      .dashboard .painel .painel-aviso .info-titulos h4 {
+        font-size: 0.9em;
+        font-weight: 500;
+        color: #333; }
+      .dashboard .painel .painel-aviso .info-titulos span {
+        font-size: 16px; }
+      .dashboard .painel .painel-aviso .info-titulos .dados {
+        display: flex;
+        flex-direction: row;
+        width: 100%; }
+      .dashboard .painel .painel-aviso div {
+        width: 32%;
+        height: 80px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background-color: #fff;
+        border-radius: 5px; }
+        .dashboard .painel .painel-aviso div span {
+          width: 100%;
+          text-align: center;
+          font-size: 0.8em; }
+    .dashboard .painel table {
+      width: 100%;
+      margin: 20px auto;
+      text-align: center;
+      border-collapse: collapse;
+      background-color: #fff;
+      border-radius: 10px;
+      padding: 20px 10px; }
+      .dashboard .painel table thead tr th {
+        font-size: 0.9em;
+        color: #333;
+        font-weight: 400; }
+      .dashboard .painel table tbody tr td {
+        font-size: 0.8em;
+        color: #444; }
+      .dashboard .painel table tbody tr:nth-child(odd) {
+        background-color: #f5f5f5; }
+      .dashboard .painel table tbody tr:nth-child(even):hover {
+        background-color: #f2f2f2; }
+      .dashboard .painel table tbody tr:nth-child(odd):hover {
+        background-color: #eee; }
