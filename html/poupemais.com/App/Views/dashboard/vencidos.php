@@ -50,17 +50,13 @@ if (!defined('DIR_ROOT')) exit('Acesso não autorizado!');
       </thead>
       <tbody>
         <?php
-        foreach ($data['titulos'] as $titulo) : ?>
+        foreach ($data['vencidos'] as $titulo) : ?>
           <tr>
             <td><?= $titulo->parcela ?></td>
             <td>R$ <?= number_format($titulo->valor, 2, ',', '.'); ?></td>
             <td><?= date("d/m/Y", strtotime($titulo->vencimento)); ?></td>
             <td><?= $titulo->situacao ?></td>
-            <?php if ($titulo->data_pagamento !== NULL) { ?>
-              <td><?= date("d/m/Y", strtotime($titulo->data_pagamento)); ?></td>
-            <?php } else { ?>
-              <td><?= $titulo->data_pagamento ?></td>
-            <?php } ?>
+            <td><?= $titulo->data_pagamento ?></td>
           </tr>
         <?php endforeach; ?>
       </tbody>

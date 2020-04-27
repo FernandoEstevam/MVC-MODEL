@@ -25,7 +25,7 @@ abstract class Model
 
     $stmt->execute();
 
-    if($stmt->rowCount() === 0) {
+    if ($stmt->rowCount() === 0) {
       Erro::setErro("Nenhum registro encontrado.");
     }
 
@@ -43,12 +43,11 @@ abstract class Model
 
     $stmt->execute();
 
-    if($stmt->rowCount() === 0) {
+    if ($stmt->rowCount() === 0) {
       Erro::setErro("Nenhum registro encontrado.");
     }
 
     return $stmt->fetch();
-
   }
 
   # Encontrar  
@@ -56,18 +55,14 @@ abstract class Model
   {
     $sql = "SELECT {$column} FROM {$this->table} WHERE {$field} = :{$field}";
 
-    $stmt = $this->connection->prepare($sql);
 
+    $stmt = $this->connection->prepare($sql);
     $stmt->bindValue(":{$field}", $value);
 
     $stmt->execute();
 
-    if($stmt->rowCount() === 0) {
+    if ($stmt->rowCount() === 0) {
       Erro::setErro("Nenhum registro encontrado.");
-    }
-
-    if($stmt->rowCount() > 1) {
-      return $stmt->fetchAll();
     }
 
     return $stmt->fetch();
@@ -84,13 +79,13 @@ abstract class Model
 
     $stmt->execute();
 
-    if($stmt->rowCount() === 0) {
+    if ($stmt->rowCount() === 0) {
       Erro::setErro("Nenhum registro encontrado.");
     }
 
     return $stmt->fetchAll();
   }
-  
+
   # Deletar
   final public function delete(int $id): bool
   {
@@ -102,7 +97,7 @@ abstract class Model
 
     $stmt->execute();
 
-    if($stmt->rowCount() === 0) {
+    if ($stmt->rowCount() === 0) {
       Erro::setErro("Nenhum registro deletado.");
     }
 

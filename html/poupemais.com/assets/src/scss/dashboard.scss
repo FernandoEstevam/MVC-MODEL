@@ -1,14 +1,14 @@
-// /* Arquivo SCSS Principal */  
+// /* Arquivo SCSS Principal */
 // https://colorlib.com/etc/lf/Login_v1/index.html
-// // Base 
-@import "./extra/variaveis.scss";  
-// // Componentes 
+// // Base
+@import "./extra/variaveis.scss";
+// // Componentes
 @import "./extra/suporte.scss";
 
 .dashboard {
   display: flex;
   justify-content: space-between;
-  
+
   .nav {
     width: 20%;
     height: 100vh;
@@ -33,15 +33,14 @@
         color: #fff;
       }
     }
-    
+
     .menu-list {
-      
-      li{
+      li {
         font-size: $font-size-sm;
         color: #fff;
         cursor: pointer;
         padding: 10px 20px;
-        
+
         a {
           display: flex;
           align-items: center;
@@ -66,46 +65,42 @@
       width: 100%;
       margin: 0 auto;
       display: flex;
+      flex-direction: row;
       align-items: center;
       justify-content: space-between;
-            
-      .info-titulos {
 
-        h4 {
-          font-size: $font-nome-cliente;
-          font-weight: 500;
-          color: $font-color-cinza;
-        }
-        span {
-          font-size: 16px;
-        }
-
-        .dados {
-          display: flex;
-          flex-direction: row;
-          width: 100%;
-        }
-      }
-
-      div {
-        width: 32%;
+      .card {
+        width: 24%;
         height: 80px;
+        background-color: #fff;
+        border-radius: 5px;
 
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        background-color: #fff;
-        border-radius: 5px;
-        
-        span {
+
+        h4 {
           width: 100%;
           text-align: center;
-          font-size: $font-size-sm;
+          font-size: $font-nome-cliente;
+          font-weight: 500;
+          color: $font-color-cinza;
+        }
+
+        .dados {
+          display: flex;
+
+          span {
+            width: 100%;
+            height: 30px;
+            text-align: center;
+            font-size: $font-size-sm;
+          }
         }
       }
     }
-    
+
     table {
       width: 100%;
       margin: 20px auto;
@@ -141,7 +136,94 @@
           background-color: #eee;
         }
       }
-
     }
+  }
+}
+h1 {
+  text-align: center;
+}
+#form-investir {
+  width: 600px;
+  margin: 0 auto;
+  border-radius: 10px;
+  background-color: #fff;
+  box-shadow: 0 0px 5px 5px rgba(0, 0, 0, 0.1);
+  padding: 30px 0;
+
+  display: grid;
+  grid-template-rows: 1fr;
+
+  gap: 20px;
+  align-content: center;
+  justify-content: space-evenly;
+
+  .valor {
+    grid-area: "valor";
+  }
+  .plano {
+    grid-area: "plano";
+  }
+  .data {
+    grid-area: "data";
+  }
+  .aporte {
+    grid-area: "aporte";
+  }
+
+  input,
+  select {
+    width: 100%;
+    height: 50px;
+    border: none;
+    border-radius: 5px;
+    background-color: #eee;
+    color: #333;
+  }
+
+  input {
+    padding: 10px;
+  }
+  select {
+    padding: 0 10px;
+  }
+
+  label {
+    width: 100%;
+    font-size: 16px;
+    color: #9c9c9c;
+  }
+
+  [type="radio"] {
+    width: 18px !important;
+    height: 18px !important;
+  }
+
+  [for="mensal"],
+  [for="unico"] {
+    display: inline-block;
+    margin-left: 10px;
+  }
+
+  .group-input {
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    .input-radio {
+      width: 100%;
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  .btn-investir {
+    width: 250px;
+    height: 40px;
+    margin-top: 60px;
+    border-radius: 5px;
+    grid-area: "button";
+    justify-self: flex-end;
   }
 }

@@ -54,31 +54,31 @@ html {
       width: 100%;
       margin: 0 auto;
       display: flex;
+      flex-direction: row;
       align-items: center;
       justify-content: space-between; }
-      .dashboard .painel .painel-aviso .info-titulos h4 {
-        font-size: 0.9em;
-        font-weight: 500;
-        color: #333; }
-      .dashboard .painel .painel-aviso .info-titulos span {
-        font-size: 16px; }
-      .dashboard .painel .painel-aviso .info-titulos .dados {
-        display: flex;
-        flex-direction: row;
-        width: 100%; }
-      .dashboard .painel .painel-aviso div {
-        width: 32%;
+      .dashboard .painel .painel-aviso .card {
+        width: 24%;
         height: 80px;
+        background-color: #fff;
+        border-radius: 5px;
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: center;
-        background-color: #fff;
-        border-radius: 5px; }
-        .dashboard .painel .painel-aviso div span {
+        justify-content: center; }
+        .dashboard .painel .painel-aviso .card h4 {
           width: 100%;
           text-align: center;
-          font-size: 0.8em; }
+          font-size: 0.9em;
+          font-weight: 500;
+          color: #333; }
+        .dashboard .painel .painel-aviso .card .dados {
+          display: flex; }
+          .dashboard .painel .painel-aviso .card .dados span {
+            width: 100%;
+            height: 30px;
+            text-align: center;
+            font-size: 0.8em; }
     .dashboard .painel table {
       width: 100%;
       margin: 20px auto;
@@ -100,3 +100,67 @@ html {
         background-color: #f2f2f2; }
       .dashboard .painel table tbody tr:nth-child(odd):hover {
         background-color: #eee; }
+
+h1 {
+  text-align: center; }
+
+#form-investir {
+  width: 600px;
+  margin: 0 auto;
+  border-radius: 10px;
+  background-color: #fff;
+  box-shadow: 0 0px 5px 5px rgba(0, 0, 0, 0.1);
+  padding: 30px 0;
+  display: grid;
+  grid-template-rows: 1fr;
+  gap: 20px;
+  align-content: center;
+  justify-content: space-evenly; }
+  #form-investir .valor {
+    grid-area: "valor"; }
+  #form-investir .plano {
+    grid-area: "plano"; }
+  #form-investir .data {
+    grid-area: "data"; }
+  #form-investir .aporte {
+    grid-area: "aporte"; }
+  #form-investir input,
+  #form-investir select {
+    width: 100%;
+    height: 50px;
+    border: none;
+    border-radius: 5px;
+    background-color: #eee;
+    color: #333; }
+  #form-investir input {
+    padding: 10px; }
+  #form-investir select {
+    padding: 0 10px; }
+  #form-investir label {
+    width: 100%;
+    font-size: 16px;
+    color: #9c9c9c; }
+  #form-investir [type="radio"] {
+    width: 18px !important;
+    height: 18px !important; }
+  #form-investir [for="mensal"],
+  #form-investir [for="unico"] {
+    display: inline-block;
+    margin-left: 10px; }
+  #form-investir .group-input {
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; }
+    #form-investir .group-input .input-radio {
+      width: 100%;
+      display: flex;
+      align-items: center; }
+  #form-investir .btn-investir {
+    width: 250px;
+    height: 40px;
+    margin-top: 60px;
+    border-radius: 5px;
+    grid-area: "button";
+    justify-self: flex-end; }
