@@ -15,19 +15,19 @@ class Dashboard
 
   final public function listInvestAberto(string $nome): array
   {
-    $aberto = (new VencimentosModel)->listVencimento($nome, "v.vencimento >= CURRENT_DATE() AND v.situacao = 'aberto'");
+    $aberto = (new VencimentosModel)->listVencimento($nome, "v.vencimento >= CURRENT_DATE() AND v.situacao = 'aberto'", "Não existe nenhum titulo em aberto.");
     return $aberto;
   }
 
   final public function listInvestVencidos(string $nome): array
   {
-    $vencidos = (new VencimentosModel)->listVencimento($nome, "v.vencimento < CURRENT_DATE()");
+    $vencidos = (new VencimentosModel)->listVencimento($nome, "v.vencimento < CURRENT_DATE()", "Não existe nenhum titulo em vencido.");
     return $vencidos;
   }
 
   final public function listInvestLiquidado(string $nome): array
   {
-    $liquidados = (new VencimentosModel)->listVencimento($nome, "v.situacao = 'pago'");
+    $liquidados = (new VencimentosModel)->listVencimento($nome, "v.situacao = 'pago'", "Não existe nenhum titulo liquidado.");
     return $liquidados;
   }
 
