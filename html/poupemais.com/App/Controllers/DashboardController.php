@@ -49,7 +49,7 @@ class DashboardController extends Controller
           'nome' => $_SESSION['name'],
           "investimentos" => $invests
         ],
-        ''
+        'footer_dashboard'
       );
     } catch (Exception $e) {
       exit($e->getMessage());
@@ -86,15 +86,15 @@ class DashboardController extends Controller
 
       $this->view->render(
         'header_dashboard',
-        '/dashboard/aberto',
+        '/dashboard/vencidos',
         [
           'nome' => $_SESSION['name'],
           "titulos" => $vencidos
         ],
-        ''
+        'footer_dashboard'
       );
     } catch (Exception $e) {
-      exit($e->getMessage());
+      echo $e->getMessage();
     }
   }
 
@@ -112,7 +112,7 @@ class DashboardController extends Controller
           'nome' => $_SESSION['name'],
           "titulos" => $liquidados
         ],
-        ''
+        'footer_dashboard'
       );
     } catch (Exception $e) {
       exit($e->getMessage());

@@ -38,6 +38,14 @@ if (!defined('DIR_ROOT')) exit('Acesso não autorizado!');
     </ul>
   </nav>
   <div class="painel">
+    <?php
+      if($data['titulos']['status'] === "erro"):
+    ?>
+    <h4><?= $data['titulos']['dados'] ?></h4>
+    <?php
+      return;
+      endif;
+    ?>
     <table>
       <thead>
         <tr>
