@@ -39,11 +39,13 @@ if (!defined('DIR_ROOT')) exit('Acesso não autorizado!');
   </nav>
   <div class="painel">
     <?php
-      if($data['titulos']['status'] === "erro"):
+      if(isset($data['titulos']['status'])):
+        if($data['titulos']['status'] === "erro"):
     ?>
     <h4><?= $data['titulos']['dados'] ?></h4>
     <?php
-      return;
+          return;
+        endif;
       endif;
     ?>
     <table>
@@ -58,7 +60,7 @@ if (!defined('DIR_ROOT')) exit('Acesso não autorizado!');
       </thead>
       <tbody>
         <?php
-        foreach ($data['vencidos'] as $titulo) : ?>
+        foreach ($data['titulos'] as $titulo) : ?>
           <tr>
             <td><?= $titulo->parcela ?></td>
             <td>R$ <?= number_format($titulo->valor, 2, ',', '.'); ?></td>

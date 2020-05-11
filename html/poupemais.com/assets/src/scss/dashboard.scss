@@ -219,11 +219,18 @@ h1 {
   }
 
   .btn-investir {
+    font-size: 16px;
     width: 250px;
     height: 40px;
     margin-top: 60px;
     border-radius: 5px;
     grid-area: "button";
     justify-self: flex-end;
+    background-color: #008cff;
+    color: #fff;
+  }
+
+  .btn-investir:hover {
+    background-color: #008cdd;
   }
 }

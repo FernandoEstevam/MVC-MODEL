@@ -79,3 +79,4 @@ if (!defined('DIR_ROOT')) exit('Acesso não autorizado!');
     </form>
   </div>
 </div>
+<script src="<?= DIR_JS . '/mask.js'?>"></script>
