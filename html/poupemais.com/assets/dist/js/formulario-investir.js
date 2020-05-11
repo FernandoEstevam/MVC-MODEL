@@ -1,4 +1,5 @@
 "use strict";
 
-const valor = document.querySelector('input[name=valor]');
+const form = document.querySelector("#form-investir");
 
+console.log(form);
