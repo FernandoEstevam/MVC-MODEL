@@ -162,7 +162,6 @@ class DashboardController extends Controller
 
   public function validaInvestimento()
   {
-    echo "<pre>";
-    print_r($_POST);
+    Erro::setSuccess("Investimento realizado com sucesso!");
   }
 }

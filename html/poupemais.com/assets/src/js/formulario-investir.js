@@ -18,16 +18,10 @@ function dados() {
   return dadosForm;
 }
 
-function formSend(e) { 
-  e.preventDefault();
-  console.log(dados());
-}
 
 valor.addEventListener("blur", () => {
   formatMoney();
 });
-
-frm.addEventListener("submit", formSend);
 
 function formatFloat(valor) {
   let int = valor;
@@ -46,3 +40,81 @@ function formatMoney() {
   valor.value = money;
 }
 
+
+function validaInput() {
+  let inputs = document.querySelectorAll("input");
+  let selects = document.querySelectorAll("select");
+  let retorno = true;
+
+  inputs.forEach((element) => {
+    if(element.value === "" || element.value === null)
+    retorno = false;
+  });
+
+  selects.forEach((element) => {
+    if(element.value === "") {
+      retorno = false;
+    }
+  });
+
+  if(retorno == false) {
+    alert("Preencha todos os campos!");
+  }
+  
+  return retorno;
+
+}
+
+function limpa_campos() {
+  let inputs = document.querySelectorAll("input");
+  let selects = document.querySelectorAll("select");
+
+  inputs.forEach((element) => {
+    element.value = "";
+  });
+
+  selects.forEach((element) => {
+    element.value = "";
+  });
+}
+
+
+function sendForm(e) {
+  e.preventDefault();
+
+  console.log(document.querySelector() 
+  const xhr = new XMLHttpRequest();
+  const url = frm.action;
+  const response = true;
+
+  if(validaInput) {
+
+    xhr.open("POST", url, true);
+    xhr.onreadystatechange = () => {
+    
+      if(xhr.status == 200 && xhr.readyState == 4) {
+        let responseJson  = JSON.parse(xhr.responseText);
+
+        if(responseJson.status == "erro") {
+          console.log(responseJson.dados);
+          response = false;
+        }
+      
+        console.log(responseJson.dados);
+      }
+
+    } 
+
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xhr.send(dados());
+
+    if(response) {
+      limpa_campos();
+    }
+  
+  }
+  
+  return false;
+}
+
+frm.addEventListener("submit", sendForm);
